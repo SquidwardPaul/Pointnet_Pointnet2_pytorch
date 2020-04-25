@@ -24,16 +24,18 @@ sys.path.append(os.path.join(ROOT_DIR, 'models'))
 def parse_args():
     '''PARAMETERS'''
     parser = argparse.ArgumentParser('PointNet')
+    parser.add_argument('--model', default='pointnet2_cls_msg', help='model name [default: pointnet_cls]')
+    parser.add_argument('--log_dir', type=str, default='pointnet2_cls_msg', help='experiment root')
+
     parser.add_argument('--batch_size', type=int, default=24, help='batch size in training [default: 24]')
-    parser.add_argument('--model', default='pointnet_cls', help='model name [default: pointnet_cls]')
     parser.add_argument('--epoch',  default=200, type=int, help='number of epoch in training [default: 200]')
     parser.add_argument('--learning_rate', default=0.001, type=float, help='learning rate in training [default: 0.001]')
     parser.add_argument('--gpu', type=str, default='0', help='specify gpu device [default: 0]')
+
     parser.add_argument('--num_point', type=int, default=1024, help='Point Number [default: 1024]')
     parser.add_argument('--optimizer', type=str, default='Adam', help='optimizer for training [default: Adam]')
-    parser.add_argument('--log_dir', type=str, default=None, help='experiment root')
     parser.add_argument('--decay_rate', type=float, default=1e-4, help='decay rate [default: 1e-4]')
-    parser.add_argument('--normal', action='store_true', default=False, help='Whether to use normal information [default: False]')
+    parser.add_argument('--normal', action='store_true', default=True, help='Whether to use normal information [default: False]')
     return parser.parse_args()
 
 def test(model, loader, num_class=40):
@@ -73,18 +75,19 @@ def main(args):
     experiment_dir.mkdir(exist_ok=True)
     experiment_dir = experiment_dir.joinpath('classification')
     experiment_dir.mkdir(exist_ok=True)
+
     if args.log_dir is None:
         experiment_dir = experiment_dir.joinpath(timestr)
     else:
         experiment_dir = experiment_dir.joinpath(args.log_dir)
     experiment_dir.mkdir(exist_ok=True)
-    checkpoints_dir = experiment_dir.joinpath('checkpoints/')
+
+    checkpoints_dir = experiment_dir.joinpath('checkpoints')
     checkpoints_dir.mkdir(exist_ok=True)
-    log_dir = experiment_dir.joinpath('logs/')
+    log_dir = experiment_dir.joinpath('logs')
     log_dir.mkdir(exist_ok=True)
 
     '''LOG'''
-    args = parse_args()
     logger = logging.getLogger("Model")
     logger.setLevel(logging.INFO)
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -99,10 +102,9 @@ def main(args):
     log_string('Load dataset ...')
     DATA_PATH = 'data/modelnet40_normal_resampled/'
 
-    TRAIN_DATASET = ModelNetDataLoader(root=DATA_PATH, npoint=args.num_point, split='train',
-                                                     normal_channel=args.normal)
-    TEST_DATASET = ModelNetDataLoader(root=DATA_PATH, npoint=args.num_point, split='test',
-                                                    normal_channel=args.normal)
+    # 这里是需要我改的 编写专用的数据集加载函数
+    TRAIN_DATASET = ModelNetDataLoader(root=DATA_PATH, npoint=args.num_point, split='train', normal_channel=args.normal)
+    TEST_DATASET = ModelNetDataLoader(root=DATA_PATH, npoint=args.num_point, split='test', normal_channel=args.normal)
     trainDataLoader = torch.utils.data.DataLoader(TRAIN_DATASET, batch_size=args.batch_size, shuffle=True, num_workers=4)
     testDataLoader = torch.utils.data.DataLoader(TEST_DATASET, batch_size=args.batch_size, shuffle=False, num_workers=4)
 

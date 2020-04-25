@@ -41,18 +41,24 @@ class ModelNetDataLoader(Dataset):
         self.root = root
         self.npoints = npoint
         self.uniform = uniform
+        self.normal_channel = normal_channel
         self.catfile = os.path.join(self.root, 'modelnet40_shape_names.txt')
 
+        # 读取文件中各类的名称，并把 空格 回车 删除掉
         self.cat = [line.rstrip() for line in open(self.catfile)]
         self.classes = dict(zip(self.cat, range(len(self.cat))))
-        self.normal_channel = normal_channel
 
+        # assert（断言）用于判断一个表达式，在表达式条件为 false 的时候触发异常。
+        assert (split == 'train' or split == 'test')
+
+        # 提取每张图的标签
         shape_ids = {}
         shape_ids['train'] = [line.rstrip() for line in open(os.path.join(self.root, 'modelnet40_train.txt'))]
         shape_ids['test'] = [line.rstrip() for line in open(os.path.join(self.root, 'modelnet40_test.txt'))]
 
-        assert (split == 'train' or split == 'test')
+        # 提取每张图的类的名字
         shape_names = ['_'.join(x.split('_')[0:-1]) for x in shape_ids[split]]
+
         # list of (shape_name, shape_txt_file_path) tuple
         self.datapath = [(shape_names[i], os.path.join(self.root, shape_names[i], shape_ids[split][i]) + '.txt') for i
                          in range(len(shape_ids[split]))]
@@ -96,7 +102,7 @@ class ModelNetDataLoader(Dataset):
 if __name__ == '__main__':
     import torch
 
-    data = ModelNetDataLoader('/data/modelnet40_normal_resampled/',split='train', uniform=False, normal_channel=True,)
+    data = ModelNetDataLoader('../data/modelnet40_normal_resampled/',split='train', uniform=False, normal_channel=True,)
     DataLoader = torch.utils.data.DataLoader(data, batch_size=12, shuffle=True)
     for point,label in DataLoader:
         print(point.shape)

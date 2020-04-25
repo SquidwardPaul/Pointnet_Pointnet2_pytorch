@@ -165,16 +165,27 @@ def sample_and_group_all(xyz, points):
 
 class PointNetSetAbstraction(nn.Module):
     def __init__(self, npoint, radius, nsample, in_channel, mlp, group_all):
+        '''
+        Input:
+            npoint: Number of point for FPS sampling
+            radius: Radius for ball query
+            nsample: Number of point for each ball query
+            in_channel: the dimention of channel
+            mlp: A list for mlp input-output channel, such as [64, 64, 128]
+            group_all: bool type for group_all or not
+        '''
         super(PointNetSetAbstraction, self).__init__()
         self.npoint = npoint
         self.radius = radius
         self.nsample = nsample
         self.mlp_convs = nn.ModuleList()
         self.mlp_bns = nn.ModuleList()
+
         last_channel = in_channel
         for out_channel in mlp:
-            self.mlp_convs.append(nn.Conv2d(last_channel, out_channel, 1))
-            self.mlp_bns.append(nn.BatchNorm2d(out_channel))
+            self.mlp_convs.append(nn.Conv2d(last_channel, out_channel, 1, stride=1, padding=0))
+            self.mlp_bns.append(nn.BatchNorm2d(out_channel))  # 在卷积之后总会添加BatchNorm2d进行数据的归一化处理，
+                                                              # 这使得数据在进行Relu之前不会因为数据过大而导致网络性能的不稳定
             last_channel = out_channel
         self.group_all = group_all
 
@@ -208,7 +219,12 @@ class PointNetSetAbstraction(nn.Module):
 
 
 class PointNetSetAbstractionMsg(nn.Module):
+    # Multi-Scale Grouping（MSG）
+    # 大部分的形式都与普通的SA层相似，但是这里radius_list输入的是一个list，例如[0.1,0.2,0.4]，
+    # 对于不同的半径做不同的 ball query，且不同的半径有不同的 nsample
+    # 最终将不同半径下的点点云特征拼接保存
     def __init__(self, npoint, radius_list, nsample_list, in_channel, mlp_list):
+
         super(PointNetSetAbstractionMsg, self).__init__()
         self.npoint = npoint
         self.radius_list = radius_list
@@ -319,3 +335,9 @@ class PointNetFeaturePropagation(nn.Module):
             new_points = F.relu(bn(conv(new_points)))
         return new_points
 
+
+if __name__ == '__main__':
+    print('dd')
+    sa1 = PointNetSetAbstractionMsg(512, [0.1, 0.2, 0.4], [16, 32, 128], 3,
+                                    [[32, 32, 64], [64, 64, 128], [64, 96, 128]])
+    print(sa1)

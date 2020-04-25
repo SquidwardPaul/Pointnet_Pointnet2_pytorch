@@ -5,12 +5,16 @@ from pointnet_util import PointNetSetAbstractionMsg, PointNetSetAbstraction
 
 class get_model(nn.Module):
     def __init__(self,num_class,normal_channel=True):
+        # super(get_model,self) 首先找到 get_model 的父类（就是类 nn.Module），然后把类 get_model 的对象转换为类 nn.Module 的对象
         super(get_model, self).__init__()
+        # 如果增加法向量信息，则 in_channel = 3
         in_channel = 3 if normal_channel else 0
         self.normal_channel = normal_channel
+        # 有三层特征提取
         self.sa1 = PointNetSetAbstractionMsg(512, [0.1, 0.2, 0.4], [16, 32, 128], in_channel,[[32, 32, 64], [64, 64, 128], [64, 96, 128]])
         self.sa2 = PointNetSetAbstractionMsg(128, [0.2, 0.4, 0.8], [32, 64, 128], 320,[[64, 64, 128], [128, 128, 256], [128, 128, 256]])
         self.sa3 = PointNetSetAbstraction(None, None, None, 640 + 3, [256, 512, 1024], True)
+        # 有三个全连接层，最后输出指定维数的特征向量
         self.fc1 = nn.Linear(1024, 512)
         self.bn1 = nn.BatchNorm1d(512)
         self.drop1 = nn.Dropout(0.4)
@@ -49,3 +53,9 @@ class get_loss(nn.Module):
         return total_loss
 
 
+
+
+if __name__ == '__main__':
+    print('dd')
+    x = get_model(10, normal_channel=True)
+    print(x)

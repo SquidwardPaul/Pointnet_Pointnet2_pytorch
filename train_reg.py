@@ -1,6 +1,7 @@
 """
-Author: Benny
-Date: Nov 2019
+Author: Jack Leung
+Date: April 2020
+Note：这是梁某基于分类的方法，魔改的手势关键点的回归
 """
 from data_utils.ModelNetDataLoader import ModelNetDataLoader
 import argparse
@@ -21,11 +22,15 @@ ROOT_DIR = BASE_DIR
 sys.path.append(os.path.join(ROOT_DIR, 'models'))
 
 
+#训练完train样本后，生成的模型model要用来测试样本。在model(test)之前，需要加上model.eval()，否则的话，有输入数据，即使不训练，它也会改变权值。这是model中含有batch normalization层所带来的的性质。
+
+
 def parse_args():
     '''PARAMETERS'''
     parser = argparse.ArgumentParser('PointNet')
-    parser.add_argument('--model', default='pointnet2_cls_msg', help='model name [default: pointnet_cls]')
-    parser.add_argument('--log_dir', type=str, default='pointnet2_cls_msg', help='experiment root')
+    parser.add_argument('--model', default='pointnet2_reg_msg', help='model name [default: pointnet_cls]')
+    parser.add_argument('--log_dir', type=str, default='pointnet2_reg_msg', help='experiment root')
+    parser.add_argument('--num_joint', default=36*3, type=int, help='number of joint in hand [default: 36*3]')
 
     parser.add_argument('--batch_size', type=int, default=4, help='batch size in training [default: 24]')
     parser.add_argument('--epoch',  default=10, type=int, help='number of epoch in training [default: 200]')
@@ -73,7 +78,7 @@ def main(args):
     timestr = str(datetime.datetime.now().strftime('%Y-%m-%d_%H-%M'))
     experiment_dir = Path('./log/')
     experiment_dir.mkdir(exist_ok=True)
-    experiment_dir = experiment_dir.joinpath('classification')
+    experiment_dir = experiment_dir.joinpath('regression')
     experiment_dir.mkdir(exist_ok=True)
 
     if args.log_dir is None:
@@ -111,9 +116,8 @@ def main(args):
     # 把依赖的模块函数 备份到日志路径里
     shutil.copy('./models/%s.py' % args.model, str(experiment_dir))
     shutil.copy('./models/pointnet_util.py', str(experiment_dir))
-    num_class = 40
     MODEL = importlib.import_module(args.model) #导入模型所在的模块
-    classifier = MODEL.get_model(num_class,normal_channel=args.normal).cuda()
+    classifier = MODEL.get_model(args.num_joint, normal_channel=args.normal).cuda()
     criterion = MODEL.get_loss().cuda()
 
     # 尝试加载已有的训练模型
@@ -154,6 +158,7 @@ def main(args):
 
         scheduler.step()
         for batch_id, data in tqdm(enumerate(trainDataLoader, 0), total=len(trainDataLoader), smoothing=0.9):
+            # 提取 mini_batch
             points, target = data
             # points 是当前 batch 的数据
             points = points.data.numpy()    # points [B, Nsample, 坐标+法向量]
@@ -161,15 +166,17 @@ def main(args):
             points[:,:, 0:3] = provider.random_scale_point_cloud(points[:,:, 0:3])  # points 做随机比例的放缩
             points[:,:, 0:3] = provider.shift_point_cloud(points[:,:, 0:3])         # points 做随机幅度的位移
             points = torch.Tensor(points)
-            # target 是当前 batch 的索引
-            target = target[:, 0]
-
             points = points.transpose(2, 1)
+            # target 是当前 batch 的标签
+            target = target[:, 0]
             points, target = points.cuda(), target.cuda()
-            optimizer.zero_grad() # 梯度置零 把loss关于weight的导数变成0.
 
-            classifier = classifier.train()
-            pred, trans_feat = classifier(points)
+            # 计算损失函数
+            optimizer.zero_grad() # 梯度置零 把loss关于weight的导数变成0.
+            classifier.train() # 使用PyTorch进行训练时,一定注意要把实例化的model指定train,表示启用 BatchNormalization 和 Dropout
+            pred, trans_feat = classifier(points)   # pred 网络的输出， trans_feat 是输入的特征值，就是三个sa层后的输出
+                                                    # pred [Batch_size, num_joint]
+                                                    # trans_feat [Batch_size, SA层的输出大小, 1]
             loss = criterion(pred, target.long(), trans_feat)
             pred_choice = pred.data.max(1)[1]
             correct = pred_choice.eq(target.long().data).cpu().sum()
@@ -183,7 +190,7 @@ def main(args):
 
 
         with torch.no_grad():
-            instance_acc, class_acc = test(classifier.eval(), testDataLoader)
+            instance_acc, class_acc = test(regression.eval(), testDataLoader)
 
             if (instance_acc >= best_instance_acc):
                 best_instance_acc = instance_acc

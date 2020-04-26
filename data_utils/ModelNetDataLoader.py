@@ -36,6 +36,7 @@ def farthest_point_sample(point, npoint):
     point = point[centroids.astype(np.int32)]
     return point
 
+# Dataset 是抽象类，不能实例化，只能由其子类继承。记住就行了
 class ModelNetDataLoader(Dataset):
     def __init__(self, root,  npoint=1024, split='train', uniform=False, normal_channel=True, cache_size=15000):
         self.root = root

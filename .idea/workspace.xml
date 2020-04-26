@@ -41,7 +41,7 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.ModelNetDataLoader">
+  <component name="RunManager" selected="Python.train_reg">
     <configuration name="ModelNetDataLoader" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Pointnet_Pointnet2_pytorch" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -63,7 +63,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="pointnet2_cls_msg" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="NyuHandDataLoader" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Pointnet_Pointnet2_pytorch" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -71,32 +71,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/models" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/data_utils" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/models/pointnet2_cls_msg.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="pointnet_cls" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Pointnet_Pointnet2_pytorch" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/models" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/models/pointnet_cls.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data_utils/NyuHandDataLoader.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -147,20 +126,41 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="train_reg" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Pointnet_Pointnet2_pytorch" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/train_reg.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
-      <item itemvalue="Python.pointnet2_cls_msg" />
+      <item itemvalue="Python.ModelNetDataLoader" />
+      <item itemvalue="Python.NyuHandDataLoader" />
       <item itemvalue="Python.pointnet_util" />
       <item itemvalue="Python.train_cls" />
-      <item itemvalue="Python.pointnet_cls" />
-      <item itemvalue="Python.ModelNetDataLoader" />
+      <item itemvalue="Python.train_reg" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.ModelNetDataLoader" />
+        <item itemvalue="Python.train_reg" />
         <item itemvalue="Python.train_cls" />
+        <item itemvalue="Python.NyuHandDataLoader" />
+        <item itemvalue="Python.ModelNetDataLoader" />
         <item itemvalue="Python.pointnet_util" />
-        <item itemvalue="Python.pointnet2_cls_msg" />
-        <item itemvalue="Python.pointnet_cls" />
       </list>
     </recent_temporary>
   </component>
@@ -219,59 +219,67 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="291" y="159" key="FileChooserDialogImpl/0.0.1536.824/-1336.0.1336.848@0.0.1536.824" timestamp="1587768450674" />
-    <state width="1515" height="261" key="GridCell.Tab.0.bottom" timestamp="1587801262573">
+    <state width="1515" height="231" key="GridCell.Tab.0.bottom" timestamp="1587886245659">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1515" height="197" key="GridCell.Tab.0.bottom/0.0.1536.824/-1336.0.1336.848@0.0.1536.824" timestamp="1587769084219" />
-    <state width="1515" height="261" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587801262573" />
-    <state width="1515" height="261" key="GridCell.Tab.0.center" timestamp="1587801262573">
+    <state width="1515" height="231" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587886245659" />
+    <state width="1515" height="231" key="GridCell.Tab.0.center" timestamp="1587886245658">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1515" height="197" key="GridCell.Tab.0.center/0.0.1536.824/-1336.0.1336.848@0.0.1536.824" timestamp="1587769084218" />
-    <state width="1515" height="261" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1587801262573" />
-    <state width="1515" height="261" key="GridCell.Tab.0.left" timestamp="1587801262573">
+    <state width="1515" height="231" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1587886245658" />
+    <state width="1515" height="231" key="GridCell.Tab.0.left" timestamp="1587886245658">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1515" height="197" key="GridCell.Tab.0.left/0.0.1536.824/-1336.0.1336.848@0.0.1536.824" timestamp="1587769084218" />
-    <state width="1515" height="261" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1587801262573" />
-    <state width="1515" height="261" key="GridCell.Tab.0.right" timestamp="1587801262573">
+    <state width="1515" height="231" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1587886245658" />
+    <state width="1515" height="231" key="GridCell.Tab.0.right" timestamp="1587886245658">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1515" height="197" key="GridCell.Tab.0.right/0.0.1536.824/-1336.0.1336.848@0.0.1536.824" timestamp="1587769084219" />
-    <state width="1515" height="261" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1587801262573" />
-    <state width="1515" height="261" key="GridCell.Tab.1.bottom" timestamp="1587801262573">
+    <state width="1515" height="231" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1587886245658" />
+    <state width="1515" height="231" key="GridCell.Tab.1.bottom" timestamp="1587886245659">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587801262573" />
-    <state width="1515" height="261" key="GridCell.Tab.1.center" timestamp="1587801262573">
+    <state width="1515" height="231" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587886245659" />
+    <state width="1515" height="231" key="GridCell.Tab.1.center" timestamp="1587886245659">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1587801262573" />
-    <state width="1515" height="261" key="GridCell.Tab.1.left" timestamp="1587801262573">
+    <state width="1515" height="231" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1587886245659" />
+    <state width="1515" height="231" key="GridCell.Tab.1.left" timestamp="1587886245659">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1587801262573" />
-    <state width="1515" height="261" key="GridCell.Tab.1.right" timestamp="1587801262573">
+    <state width="1515" height="231" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1587886245659" />
+    <state width="1515" height="231" key="GridCell.Tab.1.right" timestamp="1587886245659">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1587801262573" />
-    <state x="270" y="55" key="SettingsEditor" timestamp="1587768467475">
+    <state width="1515" height="231" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1587886245659" />
+    <state x="545" y="135" key="RollbackChangesDialog" timestamp="1587855660334">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="545" y="135" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1587855660334" />
+    <state x="270" y="55" key="SettingsEditor" timestamp="1587857610529">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="270" y="55" key="SettingsEditor/0.0.1536.824/-1336.0.1336.848@0.0.1536.824" timestamp="1587768467475" />
+    <state x="270" y="55" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1587857610529" />
+    <state x="449" y="237" key="com.intellij.ide.util.TipDialog" timestamp="1587864700469">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="449" y="237" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1587864700469" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1587885740182">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1587885740182" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/train_cls.py</url>
-          <line>102</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/data_utils/ModelNetDataLoader.py</url>
-          <line>66</line>
-          <option name="timeStamp" value="26" />
+          <url>file://$PROJECT_DIR$/train_reg.py</url>
+          <line>179</line>
+          <option name="timeStamp" value="54" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

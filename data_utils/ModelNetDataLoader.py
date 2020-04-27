@@ -43,14 +43,14 @@ class ModelNetDataLoader(Dataset):
         self.npoints = npoint
         self.uniform = uniform
         self.normal_channel = normal_channel
-        self.catfile = os.path.join(self.root, 'modelnet40_shape_names.txt')
-
-        # 读取文件中各类的名称，并把 空格 回车 删除掉
-        self.cat = [line.rstrip() for line in open(self.catfile)]
-        self.classes = dict(zip(self.cat, range(len(self.cat))))
 
         # assert（断言）用于判断一个表达式，在表达式条件为 false 的时候触发异常。
         assert (split == 'train' or split == 'test')
+
+        # 读取文件中各类的名称，并把 空格 回车 删除掉
+        self.catfile = os.path.join(self.root, 'modelnet40_shape_names.txt')
+        self.cat = [line.rstrip() for line in open(self.catfile)]
+        self.classes = dict(zip(self.cat, range(len(self.cat))))
 
         # 提取每张图的标签
         shape_ids = {}

@@ -43,9 +43,9 @@ def parse_args():
     parser.add_argument('--normal', action='store_true', default=False, help='Whether to use normal information [default: False]')
     return parser.parse_args()
 
-def test(model, loader, num_class=40):
+def test(model, loader, num_joint):
     mean_correct = []
-    class_acc = np.zeros((num_class,3))
+    class_acc = np.zeros((num_joint,3))
     for j, data in tqdm(enumerate(loader), total=len(loader)):
         points, target = data
         target = target[:, 0]
@@ -54,16 +54,10 @@ def test(model, loader, num_class=40):
         classifier = model.eval()
         pred, _ = classifier(points)
         pred_choice = pred.data.max(1)[1]
-        for cat in np.unique(target.cpu()):
-            classacc = pred_choice[target==cat].eq(target[target==cat].long().data).cpu().sum()
-            class_acc[cat,0]+= classacc.item()/float(points[target==cat].size()[0])
-            class_acc[cat,1]+=1
         correct = pred_choice.eq(target.long().data).cpu().sum()
-        mean_correct.append(correct.item()/float(points.size()[0]))
-    class_acc[:,2] =  class_acc[:,0]/ class_acc[:,1]
-    class_acc = np.mean(class_acc[:,2])
-    instance_acc = np.mean(mean_correct)
-    return instance_acc, class_acc
+        mean_correct.append(correct.item()/float(points.size()[0])) # 该 batch 的正确率
+    instance_acc = np.mean(mean_correct) # 该 epoch 下，总的正确率
+    return instance_acc
 
 
 def main(args):
@@ -118,7 +112,7 @@ def main(args):
     shutil.copy('./models/pointnet_util.py', str(experiment_dir))
     MODEL = importlib.import_module(args.model) #导入模型所在的模块
     classifier = MODEL.get_model(args.num_joint, normal_channel=args.normal).cuda()
-    criterion = MODEL.get_loss().cuda()
+    criterion = MODEL.get_loss().cuda() # 计算损失函数
 
     # 尝试加载已有的训练模型
     try:
@@ -147,8 +141,7 @@ def main(args):
     global_epoch = 0
     global_step = 0
     best_instance_acc = 0.0
-    best_class_acc = 0.0
-    mean_correct = []
+    mean_correct = [] # 记录每次训练后，该batch的争取率
 
 
     '''TRANING 训练'''
@@ -178,28 +171,28 @@ def main(args):
                                                     # pred [Batch_size, num_joint]
                                                     # trans_feat [Batch_size, SA层的输出大小, 1]
             loss = criterion(pred, target.long(), trans_feat)
-            pred_choice = pred.data.max(1)[1]
-            correct = pred_choice.eq(target.long().data).cpu().sum()
-            mean_correct.append(correct.item() / float(points.size()[0]))
             loss.backward()
             optimizer.step()
             global_step += 1
 
+            # 记录该 batch 的正确率
+            pred_choice = pred.data.max(1)[1]
+            correct = pred_choice.eq(target.long().data).cpu().sum()
+            mean_correct.append(correct.item() / float(points.size()[0]))
+
+        # 计算该 epoch 的正确率
         train_instance_acc = np.mean(mean_correct)
         log_string('Train Instance Accuracy: %f' % train_instance_acc)
 
 
-        with torch.no_grad():
-            instance_acc, class_acc = test(regression.eval(), testDataLoader)
+        with torch.no_grad(): # 不需要计算梯度
+            instance_acc = test(classifier.eval(), testDataLoader, num_joint=args.num_joint)
+            log_string('Test Instance Accuracy: %f' % (instance_acc))
 
             if (instance_acc >= best_instance_acc):
                 best_instance_acc = instance_acc
                 best_epoch = epoch + 1
-
-            if (class_acc >= best_class_acc):
-                best_class_acc = class_acc
-            log_string('Test Instance Accuracy: %f, Class Accuracy: %f'% (instance_acc, class_acc))
-            log_string('Best Instance Accuracy: %f, Class Accuracy: %f'% (best_instance_acc, best_class_acc))
+            log_string('Best Instance Accuracy: %f'% (best_instance_acc))
 
             if (instance_acc >= best_instance_acc):
                 logger.info('Save model...')
@@ -208,7 +201,6 @@ def main(args):
                 state = {
                     'epoch': best_epoch,
                     'instance_acc': instance_acc,
-                    'class_acc': class_acc,
                     'model_state_dict': classifier.state_dict(),
                     'optimizer_state_dict': optimizer.state_dict(),
                 }

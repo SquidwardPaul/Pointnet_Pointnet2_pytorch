@@ -34,7 +34,7 @@ def parse_args():
     parser.add_argument('--log_dir', type=str, default='pointnet2_reg_msg', help='experiment root')
     parser.add_argument('--num_joint', default=36*3, type=int, help='number of joint in hand [default: 36*3]')
 
-    parser.add_argument('--batch_size', type=int, default=6, help='batch size in training [default: 24]')
+    parser.add_argument('--batch_size', type=int, default=5, help='batch size in training [default: 24]')
     parser.add_argument('--epoch',  default=10, type=int, help='number of epoch in training [default: 200]')
     parser.add_argument('--learning_rate', default=0.001, type=float, help='learning rate in training [default: 0.001]')
     parser.add_argument('--gpu', type=str, default='0', help='specify gpu device [default: 0]')

@@ -592,3 +592,69 @@
 2020-04-28 14:04:51,246 - Model - INFO - Use pretrain model
 2020-04-28 14:04:51,246 - Model - INFO - Start training...
 2020-04-28 14:04:51,247 - Model - INFO - Epoch 1 (2/10):
+2020-04-28 14:08:15,852 - Model - INFO - PARAMETER ...
+2020-04-28 14:08:15,869 - Model - INFO - Namespace(batch_size=6, decay_rate=0.0001, epoch=10, gpu='0', learning_rate=0.001, log_dir='pointnet2_reg_msg', model='pointnet2_reg_msg', normal=False, num_joint=108, num_point=1024, optimizer='Adam')
+2020-04-28 14:08:15,869 - Model - INFO - Load dataset ...
+2020-04-28 14:08:20,820 - Model - INFO - Use pretrain model
+2020-04-28 14:08:20,820 - Model - INFO - Start training...
+2020-04-28 14:08:20,820 - Model - INFO - Epoch 1 (2/10):
+2020-04-28 14:08:51,701 - Model - INFO - PARAMETER ...
+2020-04-28 14:08:51,702 - Model - INFO - Namespace(batch_size=5, decay_rate=0.0001, epoch=10, gpu='0', learning_rate=0.001, log_dir='pointnet2_reg_msg', model='pointnet2_reg_msg', normal=False, num_joint=108, num_point=1024, optimizer='Adam')
+2020-04-28 14:08:51,702 - Model - INFO - Load dataset ...
+2020-04-28 14:08:55,327 - Model - INFO - Use pretrain model
+2020-04-28 14:08:55,327 - Model - INFO - Start training...
+2020-04-28 14:08:55,327 - Model - INFO - Epoch 1 (2/10):
+2020-04-28 14:09:39,296 - Model - INFO - Train Instance Error: 524.351892
+2020-04-28 14:10:05,692 - Model - INFO - Save model...
+2020-04-28 14:10:05,692 - Model - INFO - Saving at log\regression\pointnet2_reg_msg\checkpoints/best_model.pth
+2020-04-28 14:10:05,754 - Model - INFO - Test Instance Error: 551.869250
+2020-04-28 14:10:05,755 - Model - INFO - Best Instance Accuracy: 551.869250
+2020-04-28 14:10:05,755 - Model - INFO - Epoch 2 (3/10):
+2020-04-28 14:10:47,489 - Model - INFO - Train Instance Error: 523.720776
+2020-04-28 14:11:13,933 - Model - INFO - Save model...
+2020-04-28 14:11:13,933 - Model - INFO - Saving at log\regression\pointnet2_reg_msg\checkpoints/best_model.pth
+2020-04-28 14:11:13,992 - Model - INFO - Test Instance Error: 550.918982
+2020-04-28 14:11:13,992 - Model - INFO - Best Instance Accuracy: 550.918982
+2020-04-28 14:11:13,992 - Model - INFO - Epoch 3 (4/10):
+2020-04-28 14:11:55,564 - Model - INFO - Train Instance Error: 522.948590
+2020-04-28 14:12:21,603 - Model - INFO - Save model...
+2020-04-28 14:12:21,603 - Model - INFO - Saving at log\regression\pointnet2_reg_msg\checkpoints/best_model.pth
+2020-04-28 14:12:21,664 - Model - INFO - Test Instance Error: 550.715247
+2020-04-28 14:12:21,664 - Model - INFO - Best Instance Accuracy: 550.715247
+2020-04-28 14:12:21,664 - Model - INFO - Epoch 4 (5/10):
+2020-04-28 14:13:03,440 - Model - INFO - Train Instance Error: 522.116328
+2020-04-28 14:13:29,635 - Model - INFO - Save model...
+2020-04-28 14:13:29,635 - Model - INFO - Saving at log\regression\pointnet2_reg_msg\checkpoints/best_model.pth
+2020-04-28 14:13:29,701 - Model - INFO - Test Instance Error: 547.348065
+2020-04-28 14:13:29,701 - Model - INFO - Best Instance Accuracy: 547.348065
+2020-04-28 14:13:29,701 - Model - INFO - Epoch 5 (6/10):
+2020-04-28 14:14:11,582 - Model - INFO - Train Instance Error: 521.169758
+2020-04-28 14:14:37,549 - Model - INFO - Save model...
+2020-04-28 14:14:37,549 - Model - INFO - Saving at log\regression\pointnet2_reg_msg\checkpoints/best_model.pth
+2020-04-28 14:14:37,613 - Model - INFO - Test Instance Error: 544.704874
+2020-04-28 14:14:37,613 - Model - INFO - Best Instance Accuracy: 544.704874
+2020-04-28 14:14:37,613 - Model - INFO - Epoch 6 (7/10):
+2020-04-28 14:15:18,767 - Model - INFO - Train Instance Error: 520.091583
+2020-04-28 14:15:44,725 - Model - INFO - Save model...
+2020-04-28 14:15:44,726 - Model - INFO - Saving at log\regression\pointnet2_reg_msg\checkpoints/best_model.pth
+2020-04-28 14:15:44,786 - Model - INFO - Test Instance Error: 544.199805
+2020-04-28 14:15:44,787 - Model - INFO - Best Instance Accuracy: 544.199805
+2020-04-28 14:15:44,787 - Model - INFO - Epoch 7 (8/10):
+2020-04-28 14:16:25,892 - Model - INFO - Train Instance Error: 518.917059
+2020-04-28 14:16:51,749 - Model - INFO - Save model...
+2020-04-28 14:16:51,750 - Model - INFO - Saving at log\regression\pointnet2_reg_msg\checkpoints/best_model.pth
+2020-04-28 14:16:51,809 - Model - INFO - Test Instance Error: 540.022052
+2020-04-28 14:16:51,810 - Model - INFO - Best Instance Accuracy: 540.022052
+2020-04-28 14:16:51,810 - Model - INFO - Epoch 8 (9/10):
+2020-04-28 14:17:33,490 - Model - INFO - Train Instance Error: 517.662601
+2020-04-28 14:18:00,892 - Model - INFO - Save model...
+2020-04-28 14:18:00,892 - Model - INFO - Saving at log\regression\pointnet2_reg_msg\checkpoints/best_model.pth
+2020-04-28 14:18:00,964 - Model - INFO - Test Instance Error: 536.564139
+2020-04-28 14:18:00,964 - Model - INFO - Best Instance Accuracy: 536.564139
+2020-04-28 14:18:00,965 - Model - INFO - Epoch 9 (10/10):
+2020-04-28 14:18:43,656 - Model - INFO - Train Instance Error: 516.267606
+2020-04-28 14:19:13,856 - Model - INFO - Save model...
+2020-04-28 14:19:13,856 - Model - INFO - Saving at log\regression\pointnet2_reg_msg\checkpoints/best_model.pth
+2020-04-28 14:19:13,911 - Model - INFO - Test Instance Error: 534.722870
+2020-04-28 14:19:13,911 - Model - INFO - Best Instance Accuracy: 534.722870
+2020-04-28 14:19:13,911 - Model - INFO - End of training...

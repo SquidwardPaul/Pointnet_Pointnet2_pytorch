@@ -61,7 +61,7 @@ class ModelNetDataLoader(Dataset):
         shape_names = ['_'.join(x.split('_')[0:-1]) for x in shape_ids[split]]
 
         # list of (shape_name, shape_txt_file_path) tuple
-        self.datapath = [(shape_names[i], os.path.join(self.root, shape_names[i], shape_ids[split][i]) + '.txt') for i
+        self.datapath = [(shape_names[i], os.path.join(self.root, shape_names[i], shape_ids[split][i] + '.txt')) for i
                          in range(len(shape_ids[split]))]
         print('The size of %s data is %d'%(split,len(self.datapath)))
 
@@ -75,10 +75,10 @@ class ModelNetDataLoader(Dataset):
         if index in self.cache:
             point_set, cls = self.cache[index]
         else:
-            fn = self.datapath[index]
-            cls = self.classes[self.datapath[index][0]]
-            cls = np.array([cls]).astype(np.int32)
-            point_set = np.loadtxt(fn[1], delimiter=',').astype(np.float32)
+            fn = self.datapath[index] # 索引到 index 的数据
+            cls = self.classes[fn[0]]
+            cls = np.array([cls]).astype(np.int32) # 把所属类转换成 numpy 格式
+            point_set = np.loadtxt(fn[1], delimiter=',').astype(np.float32) # 读取点云txt文件，并转换为numpy
             if self.uniform:
                 point_set = farthest_point_sample(point_set, self.npoints)
             else:
@@ -103,8 +103,5 @@ class ModelNetDataLoader(Dataset):
 if __name__ == '__main__':
     import torch
 
-    data = ModelNetDataLoader('../data/modelnet40_normal_resampled/',split='train', uniform=False, normal_channel=True,)
-    DataLoader = torch.utils.data.DataLoader(data, batch_size=12, shuffle=True)
-    for point,label in DataLoader:
-        print(point.shape)
-        print(label.shape)
+    data = ModelNetDataLoader('../data/modelnet40_normal_resampled/',split='train', uniform=True, normal_channel=True,)
+    DataLoader = torch.utils.data.DataLoader(data, batch_size=10, shuffle=True, num_workers=4)

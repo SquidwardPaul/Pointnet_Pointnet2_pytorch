@@ -1,3 +1,4 @@
+import torch
 import torch.nn as nn
 import torch.nn.functional as F # 模块中定义的常用函数和类
 from pointnet_util import PointNetSetAbstractionMsg, PointNetSetAbstraction
@@ -50,7 +51,8 @@ class get_loss(nn.Module):
         super(get_loss, self).__init__()
 
     def forward(self, pred, target, trans_feat):
-        total_loss = F.nll_loss(pred, target)   # 输入 是一个对数概率向量和一个目标标签. 它不会为我们计算对数概率，
+        total_loss = F.mse_loss(pred, target)
+        #total_loss = F.nll_loss(pred, target)   # 输入 是一个对数概率向量和一个目标标签. 它不会为我们计算对数概率，
                                                 # 适合最后一层是log_softmax()的网络
 
         return total_loss

@@ -36,22 +36,22 @@ def farthest_point_sample(point, npoint):
 
 # Dataset 是抽象类，不能实例化，只能由其子类继承。记住就行了
 class NyuHandDataLoader(Dataset):
-    def __init__(self, root, npoint=1024, split='train', uniform=True, normal_channel=False, cache_size=15000):
+    def __init__(self, root, npoint=1024, split='train', uniform=True, normal_channel=False, cache_size=1000):
         self.root = root
         self.npoints = npoint
         self.uniform = uniform
         self.normal_channel = normal_channel
 
         # assert（断言）用于判断一个表达式，在表达式条件为 false 的时候触发异常。
-        assert (split == 'train' or split == 'test')
+        assert (split == 'train_body' or split == 'test_body' or split == 'train_hand' or split == 'test_hand')
 
         # 从标签文件，提取每张图的信息，从 hand_ids_coord 提取每张图的编号 hand_ids 和 坐标信息 hand_coord
-        hand_ids_coord = [line.rstrip().split(' ') for line in open(os.path.join(self.root, split+'_hand/', 'hand_joint_label.txt'))]
+        hand_ids_coord = [line.rstrip().split(' ') for line in open(os.path.join(self.root, split, 'hand_joint_label.txt'))]
         hand_ids = [ ''.join(x[0:1]) for x in hand_ids_coord]
         hand_coord = [ x[1:]  for x in hand_ids_coord]
 
         # 将图片编号，图片路径，手关节坐标，列为一个元组
-        self.hand_all = [(i, os.path.join(self.root, split + '_hand/cloudpoints/', hand_ids[i] + '.txt'), hand_coord[i]) for
+        self.hand_all = [(i, os.path.join(self.root, split , 'cloudpoints/', hand_ids[i] + '.txt'), hand_coord[i]) for
                          i in range(len(hand_ids))]
         print('The size of %s data is %d' % (split, len(self.hand_all)))
 
@@ -102,5 +102,5 @@ class NyuHandDataLoader(Dataset):
 if __name__ == '__main__':
     import torch
 
-    data = NyuHandDataLoader('../data/nyu_hand_dataset_v2/', split='train', uniform=True, normal_channel=False, )
+    data = NyuHandDataLoader('../data/nyu_hand_dataset_v2/', split='train_hand', uniform=True, normal_channel=False, )
     DataLoader = torch.utils.data.DataLoader(data, batch_size=10, shuffle=True)

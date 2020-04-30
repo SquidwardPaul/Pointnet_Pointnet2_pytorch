@@ -32,6 +32,7 @@ def parse_args():
     parser = argparse.ArgumentParser('PointNet')
     parser.add_argument('--model', default='pointnet2_reg_msg', help='model name [default: pointnet_cls]')
     parser.add_argument('--log_dir', type=str, default='pointnet2_reg_msg', help='experiment root')
+    parser.add_argument('--shape', type=str, default='body', help='body or hand')
     parser.add_argument('--num_joint', default=36*3, type=int, help='number of joint in hand [default: 36*3]')
 
     parser.add_argument('--batch_size', type=int, default=5, help='batch size in training [default: 24]')
@@ -105,8 +106,8 @@ def main(args):
     log_string('Load dataset ...')
     DATA_PATH = './data/nyu_hand_dataset_v2/'
     # 这里是需要我改的 编写专用的数据集加载函数
-    TRAIN_DATASET = NyuHandDataLoader(root=DATA_PATH, npoint=args.num_point, split='train', normal_channel=args.normal)
-    TEST_DATASET = NyuHandDataLoader(root=DATA_PATH, npoint=args.num_point, split='test', normal_channel=args.normal)
+    TRAIN_DATASET = NyuHandDataLoader(root=DATA_PATH, npoint=args.num_point, split='train_'+args.shape, normal_channel=args.normal)
+    TEST_DATASET = NyuHandDataLoader(root=DATA_PATH, npoint=args.num_point, split='test_'+args.shape, normal_channel=args.normal)
     trainDataLoader = torch.utils.data.DataLoader(TRAIN_DATASET, batch_size=args.batch_size, shuffle=True, num_workers=4)
     testDataLoader = torch.utils.data.DataLoader(TEST_DATASET, batch_size=args.batch_size, shuffle=False, num_workers=4)
 

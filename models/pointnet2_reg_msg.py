@@ -61,6 +61,5 @@ class get_loss(nn.Module):
 
 
 if __name__ == '__main__':
-    print('dd')
     x = get_model(10, normal_channel=True)
     print(x)

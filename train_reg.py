@@ -33,15 +33,15 @@ def parse_args():
     parser.add_argument('--model', default='pointnet2_reg_msg', help='model name [default: pointnet_cls]')
     parser.add_argument('--log_dir', type=str, default='pointnet2_reg_msg', help='experiment root')
     parser.add_argument('--shape', type=str, default='body', help='body or hand')
-    parser.add_argument('--num_joint', default=36*3, type=int, help='number of joint in hand [default: 36*3]')
+    parser.add_argument('--num_joint', default=6, type=int, help='number of joint in hand [default: 36*3]')
 
     parser.add_argument('--batch_size', type=int, default=5, help='batch size in training [default: 24]')
-    parser.add_argument('--epoch',  default=10, type=int, help='number of epoch in training [default: 200]')
-    parser.add_argument('--learning_rate', default=0.001, type=float, help='learning rate in training [default: 0.001]')
+    parser.add_argument('--epoch',  default=400, type=int, help='number of epoch in training [default: 200]')
     parser.add_argument('--gpu', type=str, default='0', help='specify gpu device [default: 0]')
 
     parser.add_argument('--num_point', type=int, default=1024, help='Point Number [default: 1024]')
     parser.add_argument('--optimizer', type=str, default='Adam', help='optimizer for training [default: Adam]')
+    parser.add_argument('--learning_rate', default=0.001, type=float, help='learning rate in training [default: 0.001]')
     parser.add_argument('--decay_rate', type=float, default=1e-4, help='decay rate [default: 1e-4]')
     parser.add_argument('--normal', action='store_true', default=False, help='Whether to use normal information [default: False]')
     return parser.parse_args()
@@ -56,7 +56,7 @@ def test(model, loader):
         pred, _ = classifier(points)
         # 记录该 batch 的误差率
         dist = (pred - target) ** 2
-        dist = dist.reshape(args.batch_size, 36, -1)
+        dist = dist.reshape(args.batch_size, args.num_joint, -1)
         dist = torch.sqrt(torch.sum(dist, 2))  # [Batch_size,36] 36个关键点的坐标，预测值与标签值的欧氏距离
         mean_dist.append(torch.mean(torch.mean(dist, 1)).item())  # 记录该 batch 的误差率
 
@@ -116,7 +116,7 @@ def main(args):
     shutil.copy('./models/%s.py' % args.model, str(experiment_dir))
     shutil.copy('./models/pointnet_util.py', str(experiment_dir))
     MODEL = importlib.import_module(args.model) #导入模型所在的模块
-    classifier = MODEL.get_model(args.num_joint, normal_channel=args.normal).cuda()
+    classifier = MODEL.get_model(args.num_joint*3, normal_channel=args.normal).cuda()
     criterion = MODEL.get_loss().cuda() # 计算损失函数
 
     # 尝试加载已有的训练模型
@@ -171,7 +171,7 @@ def main(args):
             optimizer.zero_grad() # 梯度置零 把loss关于weight的导数变成0.
             classifier.train() # 使用PyTorch进行训练时,一定注意要把实例化的model指定train,表示启用 BatchNormalization 和 Dropout
             pred, trans_feat = classifier(points)   # pred 网络的输出， trans_feat 是输入的特征值，就是三个sa层后的输出
-                                                    # pred [Batch_size, num_joint]
+                                                    # pred [Batch_size, num_joint*3]
                                                     # trans_feat [Batch_size, SA层的输出大小, 1]
             loss = criterion(pred, target, trans_feat)
             loss.backward()
@@ -180,13 +180,13 @@ def main(args):
 
             # 记录该 batch 的误差率
             dist = (pred - target) ** 2
-            dist = dist.reshape(args.batch_size,36,-1)
+            dist = dist.reshape(args.batch_size,args.num_joint,-1)
             dist = torch.sqrt(torch.sum(dist, 2))  # [Batch_size,36] 36个关键点的坐标，预测值与标签值的欧氏距离
             mean_dist.append(torch.mean(torch.mean(dist,1)).item()) # 记录该 batch 的误差率
 
         # 计算该 epoch 的误差率
         train_instance_error = np.mean(mean_dist)
-        log_string('Train Instance Error: %f' % train_instance_error)
+        log_string('The %dth Train Instance Error: %f' %(epoch+1, train_instance_error))
 
 
         with torch.no_grad(): # 不需要计算梯度
@@ -206,8 +206,8 @@ def main(args):
                 }
                 torch.save(state, savepath)
 
-            log_string('Test Instance Error: %f' % (test_instance_error))
-            log_string('Best Instance Accuracy: %f'% (best_instance_error))
+            log_string('The %dth Test Instance Error: %f' % (epoch+1 , test_instance_error))
+            log_string('Best Instance Error: %f \n'% (best_instance_error))
 
             global_epoch += 1
 

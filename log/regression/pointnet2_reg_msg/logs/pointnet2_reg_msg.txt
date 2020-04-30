@@ -1,0 +1,949 @@
+2020-04-30 11:48:47,491 - Model - INFO - PARAMETER ...
+2020-04-30 11:48:47,491 - Model - INFO - Namespace(batch_size=5, decay_rate=0.0001, epoch=20, gpu='0', learning_rate=0.001, log_dir='pointnet2_reg_msg', model='pointnet2_reg_msg', normal=False, num_joint=6, num_point=1024, optimizer='Adam', shape='body')
+2020-04-30 11:48:47,491 - Model - INFO - Load dataset ...
+2020-04-30 11:48:50,992 - Model - INFO - No existing model, starting training from scratch...
+2020-04-30 11:48:50,993 - Model - INFO - Start training...
+2020-04-30 11:48:50,993 - Model - INFO - Epoch 1 (1/20):
+2020-04-30 11:49:18,530 - Model - INFO - The 1th Train Instance Error: 635.905746
+2020-04-30 11:49:28,273 - Model - INFO - Save model...
+2020-04-30 11:49:28,273 - Model - INFO - Saving at log\regression\pointnet2_reg_msg\checkpoints/best_model.pth
+2020-04-30 11:49:28,390 - Model - INFO - The 1th Test Instance Error: 598.839396
+2020-04-30 11:49:28,390 - Model - INFO - Best Instance Error: 598.839396 
+
+2020-04-30 11:49:28,391 - Model - INFO - Epoch 2 (2/20):
+2020-04-30 11:49:54,474 - Model - INFO - The 2th Train Instance Error: 635.789678
+2020-04-30 11:50:04,118 - Model - INFO - Save model...
+2020-04-30 11:50:04,118 - Model - INFO - Saving at log\regression\pointnet2_reg_msg\checkpoints/best_model.pth
+2020-04-30 11:50:04,243 - Model - INFO - The 2th Test Instance Error: 598.533763
+2020-04-30 11:50:04,244 - Model - INFO - Best Instance Error: 598.533763 
+
+2020-04-30 11:50:04,244 - Model - INFO - Epoch 3 (3/20):
+2020-04-30 11:50:29,969 - Model - INFO - The 3th Train Instance Error: 635.672818
+2020-04-30 11:50:39,047 - Model - INFO - Save model...
+2020-04-30 11:50:39,047 - Model - INFO - Saving at log\regression\pointnet2_reg_msg\checkpoints/best_model.pth
+2020-04-30 11:50:39,176 - Model - INFO - The 3th Test Instance Error: 598.347656
+2020-04-30 11:50:39,176 - Model - INFO - Best Instance Error: 598.347656 
+
+2020-04-30 11:50:39,176 - Model - INFO - Epoch 4 (4/20):
+2020-04-30 11:51:05,985 - Model - INFO - The 4th Train Instance Error: 635.552419
+2020-04-30 11:51:15,354 - Model - INFO - Save model...
+2020-04-30 11:51:15,354 - Model - INFO - Saving at log\regression\pointnet2_reg_msg\checkpoints/best_model.pth
+2020-04-30 11:51:15,431 - Model - INFO - The 4th Test Instance Error: 598.164744
+2020-04-30 11:51:15,431 - Model - INFO - Best Instance Error: 598.164744 
+
+2020-04-30 11:51:15,431 - Model - INFO - Epoch 5 (5/20):
+2020-04-30 11:51:41,890 - Model - INFO - The 5th Train Instance Error: 635.413525
+2020-04-30 11:51:51,360 - Model - INFO - Save model...
+2020-04-30 11:51:51,360 - Model - INFO - Saving at log\regression\pointnet2_reg_msg\checkpoints/best_model.pth
+2020-04-30 11:51:51,436 - Model - INFO - The 5th Test Instance Error: 597.811920
+2020-04-30 11:51:51,436 - Model - INFO - Best Instance Error: 597.811920 
+
+2020-04-30 11:51:51,436 - Model - INFO - Epoch 6 (6/20):
+2020-04-30 11:52:17,963 - Model - INFO - The 6th Train Instance Error: 635.267583
+2020-04-30 11:52:27,355 - Model - INFO - Save model...
+2020-04-30 11:52:27,355 - Model - INFO - Saving at log\regression\pointnet2_reg_msg\checkpoints/best_model.pth
+2020-04-30 11:52:27,477 - Model - INFO - The 6th Test Instance Error: 597.456512
+2020-04-30 11:52:27,477 - Model - INFO - Best Instance Error: 597.456512 
+
+2020-04-30 11:52:27,478 - Model - INFO - Epoch 7 (7/20):
+2020-04-30 11:52:53,753 - Model - INFO - The 7th Train Instance Error: 635.108347
+2020-04-30 11:53:03,652 - Model - INFO - Save model...
+2020-04-30 11:53:03,653 - Model - INFO - Saving at log\regression\pointnet2_reg_msg\checkpoints/best_model.pth
+2020-04-30 11:53:03,763 - Model - INFO - The 7th Test Instance Error: 597.043009
+2020-04-30 11:53:03,763 - Model - INFO - Best Instance Error: 597.043009 
+
+2020-04-30 11:53:03,763 - Model - INFO - Epoch 8 (8/20):
+2020-04-30 11:53:29,543 - Model - INFO - The 8th Train Instance Error: 634.930281
+2020-04-30 11:53:39,371 - Model - INFO - The 8th Test Instance Error: 597.158946
+2020-04-30 11:53:39,371 - Model - INFO - Best Instance Error: 597.043009 
+
+2020-04-30 11:53:39,371 - Model - INFO - Epoch 9 (9/20):
+2020-04-30 11:54:05,844 - Model - INFO - The 9th Train Instance Error: 634.740075
+2020-04-30 11:54:15,497 - Model - INFO - Save model...
+2020-04-30 11:54:15,497 - Model - INFO - Saving at log\regression\pointnet2_reg_msg\checkpoints/best_model.pth
+2020-04-30 11:54:15,604 - Model - INFO - The 9th Test Instance Error: 596.980530
+2020-04-30 11:54:15,604 - Model - INFO - Best Instance Error: 596.980530 
+
+2020-04-30 11:54:15,604 - Model - INFO - Epoch 10 (10/20):
+2020-04-30 11:54:41,614 - Model - INFO - The 10th Train Instance Error: 634.559147
+2020-04-30 11:54:51,165 - Model - INFO - Save model...
+2020-04-30 11:54:51,165 - Model - INFO - Saving at log\regression\pointnet2_reg_msg\checkpoints/best_model.pth
+2020-04-30 11:54:51,290 - Model - INFO - The 10th Test Instance Error: 596.551707
+2020-04-30 11:54:51,290 - Model - INFO - Best Instance Error: 596.551707 
+
+2020-04-30 11:54:51,290 - Model - INFO - Epoch 11 (11/20):
+2020-04-30 11:55:17,166 - Model - INFO - The 11th Train Instance Error: 634.357664
+2020-04-30 11:55:26,891 - Model - INFO - The 11th Test Instance Error: 596.901204
+2020-04-30 11:55:26,891 - Model - INFO - Best Instance Error: 596.551707 
+
+2020-04-30 11:55:26,891 - Model - INFO - Epoch 12 (12/20):
+2020-04-30 11:55:52,733 - Model - INFO - The 12th Train Instance Error: 634.130989
+2020-04-30 11:56:02,234 - Model - INFO - Save model...
+2020-04-30 11:56:02,234 - Model - INFO - Saving at log\regression\pointnet2_reg_msg\checkpoints/best_model.pth
+2020-04-30 11:56:02,307 - Model - INFO - The 12th Test Instance Error: 596.425832
+2020-04-30 11:56:02,308 - Model - INFO - Best Instance Error: 596.425832 
+
+2020-04-30 11:56:02,308 - Model - INFO - Epoch 13 (13/20):
+2020-04-30 11:56:28,223 - Model - INFO - The 13th Train Instance Error: 633.899607
+2020-04-30 11:56:37,994 - Model - INFO - Save model...
+2020-04-30 11:56:37,994 - Model - INFO - Saving at log\regression\pointnet2_reg_msg\checkpoints/best_model.pth
+2020-04-30 11:56:38,062 - Model - INFO - The 13th Test Instance Error: 596.407054
+2020-04-30 11:56:38,062 - Model - INFO - Best Instance Error: 596.407054 
+
+2020-04-30 11:56:38,063 - Model - INFO - Epoch 14 (14/20):
+2020-04-30 11:57:04,723 - Model - INFO - The 14th Train Instance Error: 633.684097
+2020-04-30 11:57:13,965 - Model - INFO - The 14th Test Instance Error: 596.529704
+2020-04-30 11:57:13,965 - Model - INFO - Best Instance Error: 596.407054 
+
+2020-04-30 11:57:13,965 - Model - INFO - Epoch 15 (15/20):
+2020-04-30 11:57:39,963 - Model - INFO - The 15th Train Instance Error: 633.416108
+2020-04-30 11:57:49,712 - Model - INFO - Save model...
+2020-04-30 11:57:49,713 - Model - INFO - Saving at log\regression\pointnet2_reg_msg\checkpoints/best_model.pth
+2020-04-30 11:57:49,779 - Model - INFO - The 15th Test Instance Error: 595.306468
+2020-04-30 11:57:49,780 - Model - INFO - Best Instance Error: 595.306468 
+
+2020-04-30 11:57:49,780 - Model - INFO - Epoch 16 (16/20):
+2020-04-30 11:58:15,490 - Model - INFO - The 16th Train Instance Error: 633.106690
+2020-04-30 11:58:25,273 - Model - INFO - The 16th Test Instance Error: 596.014679
+2020-04-30 11:58:25,273 - Model - INFO - Best Instance Error: 595.306468 
+
+2020-04-30 11:58:25,273 - Model - INFO - Epoch 17 (17/20):
+2020-04-30 11:58:51,314 - Model - INFO - The 17th Train Instance Error: 632.792319
+2020-04-30 11:59:01,147 - Model - INFO - The 17th Test Instance Error: 597.131480
+2020-04-30 11:59:01,147 - Model - INFO - Best Instance Error: 595.306468 
+
+2020-04-30 11:59:01,147 - Model - INFO - Epoch 18 (18/20):
+2020-04-30 11:59:27,284 - Model - INFO - The 18th Train Instance Error: 632.476890
+2020-04-30 11:59:36,900 - Model - INFO - The 18th Test Instance Error: 595.744914
+2020-04-30 11:59:36,900 - Model - INFO - Best Instance Error: 595.306468 
+
+2020-04-30 11:59:36,900 - Model - INFO - Epoch 19 (19/20):
+2020-04-30 12:00:02,740 - Model - INFO - The 19th Train Instance Error: 632.138155
+2020-04-30 12:00:12,867 - Model - INFO - The 19th Test Instance Error: 595.437256
+2020-04-30 12:00:12,868 - Model - INFO - Best Instance Error: 595.306468 
+
+2020-04-30 12:00:12,868 - Model - INFO - Epoch 20 (20/20):
+2020-04-30 12:00:38,970 - Model - INFO - The 20th Train Instance Error: 631.763311
+2020-04-30 12:00:48,819 - Model - INFO - The 20th Test Instance Error: 596.092173
+2020-04-30 12:00:48,819 - Model - INFO - Best Instance Error: 595.306468 
+
+2020-04-30 12:00:48,819 - Model - INFO - End of training...
+2020-04-30 12:02:05,655 - Model - INFO - PARAMETER ...
+2020-04-30 12:02:05,655 - Model - INFO - Namespace(batch_size=5, decay_rate=0.0001, epoch=40, gpu='0', learning_rate=0.001, log_dir='pointnet2_reg_msg', model='pointnet2_reg_msg', normal=False, num_joint=6, num_point=1024, optimizer='Adam', shape='body')
+2020-04-30 12:02:05,656 - Model - INFO - Load dataset ...
+2020-04-30 12:02:09,301 - Model - INFO - Use pretrain model
+2020-04-30 12:02:09,301 - Model - INFO - Start training...
+2020-04-30 12:02:09,301 - Model - INFO - Epoch 1 (16/40):
+2020-04-30 12:02:37,506 - Model - INFO - The 16th Train Instance Error: 628.275030
+2020-04-30 12:02:47,037 - Model - INFO - Save model...
+2020-04-30 12:02:47,037 - Model - INFO - Saving at log\regression\pointnet2_reg_msg\checkpoints/best_model.pth
+2020-04-30 12:02:47,115 - Model - INFO - The 16th Test Instance Error: 597.819478
+2020-04-30 12:02:47,115 - Model - INFO - Best Instance Error: 597.819478 
+
+2020-04-30 12:02:47,115 - Model - INFO - Epoch 2 (17/40):
+2020-04-30 12:03:14,213 - Model - INFO - The 17th Train Instance Error: 628.151474
+2020-04-30 12:03:26,230 - Model - INFO - Save model...
+2020-04-30 12:03:26,231 - Model - INFO - Saving at log\regression\pointnet2_reg_msg\checkpoints/best_model.pth
+2020-04-30 12:03:26,471 - Model - INFO - The 17th Test Instance Error: 596.157410
+2020-04-30 12:03:26,471 - Model - INFO - Best Instance Error: 596.157410 
+
+2020-04-30 12:03:26,471 - Model - INFO - Epoch 3 (18/40):
+2020-04-30 12:03:54,805 - Model - INFO - The 18th Train Instance Error: 627.777098
+2020-04-30 12:04:06,183 - Model - INFO - Save model...
+2020-04-30 12:04:06,184 - Model - INFO - Saving at log\regression\pointnet2_reg_msg\checkpoints/best_model.pth
+2020-04-30 12:04:06,326 - Model - INFO - The 18th Test Instance Error: 595.076711
+2020-04-30 12:04:06,326 - Model - INFO - Best Instance Error: 595.076711 
+
+2020-04-30 12:04:06,326 - Model - INFO - Epoch 4 (19/40):
+2020-04-30 12:04:36,153 - Model - INFO - The 19th Train Instance Error: 627.372428
+2020-04-30 12:04:47,053 - Model - INFO - The 19th Test Instance Error: 596.367025
+2020-04-30 12:04:47,053 - Model - INFO - Best Instance Error: 595.076711 
+
+2020-04-30 12:04:47,053 - Model - INFO - Epoch 5 (20/40):
+2020-04-30 12:05:14,793 - Model - INFO - The 20th Train Instance Error: 626.820973
+2020-04-30 12:05:25,535 - Model - INFO - Save model...
+2020-04-30 12:05:25,535 - Model - INFO - Saving at log\regression\pointnet2_reg_msg\checkpoints/best_model.pth
+2020-04-30 12:05:25,657 - Model - INFO - The 20th Test Instance Error: 594.803650
+2020-04-30 12:05:25,657 - Model - INFO - Best Instance Error: 594.803650 
+
+2020-04-30 12:05:25,657 - Model - INFO - Epoch 6 (21/40):
+2020-04-30 12:05:53,568 - Model - INFO - The 21th Train Instance Error: 626.427878
+2020-04-30 12:06:04,272 - Model - INFO - Save model...
+2020-04-30 12:06:04,272 - Model - INFO - Saving at log\regression\pointnet2_reg_msg\checkpoints/best_model.pth
+2020-04-30 12:06:04,392 - Model - INFO - The 21th Test Instance Error: 593.589142
+2020-04-30 12:06:04,392 - Model - INFO - Best Instance Error: 593.589142 
+
+2020-04-30 12:06:04,392 - Model - INFO - Epoch 7 (22/40):
+2020-04-30 12:06:31,969 - Model - INFO - The 22th Train Instance Error: 625.964103
+2020-04-30 12:06:42,510 - Model - INFO - The 22th Test Instance Error: 594.119904
+2020-04-30 12:06:42,510 - Model - INFO - Best Instance Error: 593.589142 
+
+2020-04-30 12:06:42,510 - Model - INFO - Epoch 8 (23/40):
+2020-04-30 12:07:09,838 - Model - INFO - The 23th Train Instance Error: 625.618385
+2020-04-30 12:07:20,402 - Model - INFO - Save model...
+2020-04-30 12:07:20,402 - Model - INFO - Saving at log\regression\pointnet2_reg_msg\checkpoints/best_model.pth
+2020-04-30 12:07:20,512 - Model - INFO - The 23th Test Instance Error: 592.485921
+2020-04-30 12:07:20,512 - Model - INFO - Best Instance Error: 592.485921 
+
+2020-04-30 12:07:20,513 - Model - INFO - Epoch 9 (24/40):
+2020-04-30 12:07:47,865 - Model - INFO - The 24th Train Instance Error: 625.170506
+2020-04-30 12:07:58,303 - Model - INFO - Save model...
+2020-04-30 12:07:58,303 - Model - INFO - Saving at log\regression\pointnet2_reg_msg\checkpoints/best_model.pth
+2020-04-30 12:07:58,407 - Model - INFO - The 24th Test Instance Error: 591.230835
+2020-04-30 12:07:58,407 - Model - INFO - Best Instance Error: 591.230835 
+
+2020-04-30 12:07:58,407 - Model - INFO - Epoch 10 (25/40):
+2020-04-30 12:08:26,029 - Model - INFO - The 25th Train Instance Error: 624.703146
+2020-04-30 12:08:35,170 - Model - INFO - The 25th Test Instance Error: 595.201243
+2020-04-30 12:08:35,170 - Model - INFO - Best Instance Error: 591.230835 
+
+2020-04-30 12:08:35,171 - Model - INFO - Epoch 11 (26/40):
+2020-04-30 12:09:01,899 - Model - INFO - The 26th Train Instance Error: 624.350096
+2020-04-30 12:09:11,909 - Model - INFO - The 26th Test Instance Error: 596.846151
+2020-04-30 12:09:11,909 - Model - INFO - Best Instance Error: 591.230835 
+
+2020-04-30 12:09:11,909 - Model - INFO - Epoch 12 (27/40):
+2020-04-30 12:09:37,909 - Model - INFO - The 27th Train Instance Error: 623.909485
+2020-04-30 12:09:47,225 - Model - INFO - The 27th Test Instance Error: 599.094340
+2020-04-30 12:09:47,225 - Model - INFO - Best Instance Error: 591.230835 
+
+2020-04-30 12:09:47,225 - Model - INFO - Epoch 13 (28/40):
+2020-04-30 12:10:13,557 - Model - INFO - The 28th Train Instance Error: 623.580408
+2020-04-30 12:10:23,518 - Model - INFO - The 28th Test Instance Error: 596.890951
+2020-04-30 12:10:23,518 - Model - INFO - Best Instance Error: 591.230835 
+
+2020-04-30 12:10:23,519 - Model - INFO - Epoch 14 (29/40):
+2020-04-30 12:10:49,230 - Model - INFO - The 29th Train Instance Error: 623.179416
+2020-04-30 12:10:58,345 - Model - INFO - The 29th Test Instance Error: 594.002991
+2020-04-30 12:10:58,345 - Model - INFO - Best Instance Error: 591.230835 
+
+2020-04-30 12:10:58,345 - Model - INFO - Epoch 15 (30/40):
+2020-04-30 12:11:24,313 - Model - INFO - The 30th Train Instance Error: 622.838569
+2020-04-30 12:11:33,416 - Model - INFO - The 30th Test Instance Error: 592.857513
+2020-04-30 12:11:33,416 - Model - INFO - Best Instance Error: 591.230835 
+
+2020-04-30 12:11:33,416 - Model - INFO - Epoch 16 (31/40):
+2020-04-30 12:11:59,937 - Model - INFO - The 31th Train Instance Error: 622.435309
+2020-04-30 12:12:09,772 - Model - INFO - The 31th Test Instance Error: 598.463236
+2020-04-30 12:12:09,772 - Model - INFO - Best Instance Error: 591.230835 
+
+2020-04-30 12:12:09,772 - Model - INFO - Epoch 17 (32/40):
+2020-04-30 12:12:36,041 - Model - INFO - The 32th Train Instance Error: 622.088180
+2020-04-30 12:12:45,072 - Model - INFO - The 32th Test Instance Error: 597.935343
+2020-04-30 12:12:45,072 - Model - INFO - Best Instance Error: 591.230835 
+
+2020-04-30 12:12:45,072 - Model - INFO - Epoch 18 (33/40):
+2020-04-30 12:13:11,871 - Model - INFO - The 33th Train Instance Error: 621.682425
+2020-04-30 12:13:22,070 - Model - INFO - The 33th Test Instance Error: 597.573842
+2020-04-30 12:13:22,070 - Model - INFO - Best Instance Error: 591.230835 
+
+2020-04-30 12:13:22,070 - Model - INFO - Epoch 19 (34/40):
+2020-04-30 12:13:48,143 - Model - INFO - The 34th Train Instance Error: 621.275931
+2020-04-30 12:13:57,432 - Model - INFO - The 34th Test Instance Error: 599.791280
+2020-04-30 12:13:57,433 - Model - INFO - Best Instance Error: 591.230835 
+
+2020-04-30 12:13:57,433 - Model - INFO - Epoch 20 (35/40):
+2020-04-30 12:14:23,134 - Model - INFO - The 35th Train Instance Error: 620.766125
+2020-04-30 12:14:32,277 - Model - INFO - The 35th Test Instance Error: 598.973704
+2020-04-30 12:14:32,278 - Model - INFO - Best Instance Error: 591.230835 
+
+2020-04-30 12:14:32,278 - Model - INFO - Epoch 21 (36/40):
+2020-04-30 12:14:58,695 - Model - INFO - The 36th Train Instance Error: 620.286209
+2020-04-30 12:15:08,317 - Model - INFO - The 36th Test Instance Error: 596.980479
+2020-04-30 12:15:08,317 - Model - INFO - Best Instance Error: 591.230835 
+
+2020-04-30 12:15:08,318 - Model - INFO - Epoch 22 (37/40):
+2020-04-30 12:15:33,995 - Model - INFO - The 37th Train Instance Error: 619.882013
+2020-04-30 12:15:43,676 - Model - INFO - The 37th Test Instance Error: 595.910817
+2020-04-30 12:15:43,677 - Model - INFO - Best Instance Error: 591.230835 
+
+2020-04-30 12:15:43,677 - Model - INFO - Epoch 23 (38/40):
+2020-04-30 12:16:09,987 - Model - INFO - The 38th Train Instance Error: 619.470976
+2020-04-30 12:16:19,544 - Model - INFO - The 38th Test Instance Error: 593.190653
+2020-04-30 12:16:19,544 - Model - INFO - Best Instance Error: 591.230835 
+
+2020-04-30 12:16:19,545 - Model - INFO - Epoch 24 (39/40):
+2020-04-30 12:16:45,586 - Model - INFO - The 39th Train Instance Error: 619.130265
+2020-04-30 12:16:55,582 - Model - INFO - The 39th Test Instance Error: 594.371175
+2020-04-30 12:16:55,583 - Model - INFO - Best Instance Error: 591.230835 
+
+2020-04-30 12:16:55,583 - Model - INFO - Epoch 25 (40/40):
+2020-04-30 12:17:21,544 - Model - INFO - The 40th Train Instance Error: 618.828477
+2020-04-30 12:17:31,036 - Model - INFO - Save model...
+2020-04-30 12:17:31,037 - Model - INFO - Saving at log\regression\pointnet2_reg_msg\checkpoints/best_model.pth
+2020-04-30 12:17:31,167 - Model - INFO - The 40th Test Instance Error: 590.853973
+2020-04-30 12:17:31,167 - Model - INFO - Best Instance Error: 590.853973 
+
+2020-04-30 12:17:31,167 - Model - INFO - End of training...
+2020-04-30 12:18:03,114 - Model - INFO - PARAMETER ...
+2020-04-30 12:18:03,115 - Model - INFO - Namespace(batch_size=5, decay_rate=0.0001, epoch=400, gpu='0', learning_rate=0.001, log_dir='pointnet2_reg_msg', model='pointnet2_reg_msg', normal=False, num_joint=6, num_point=1024, optimizer='Adam', shape='body')
+2020-04-30 12:18:03,115 - Model - INFO - Load dataset ...
+2020-04-30 12:18:06,220 - Model - INFO - Use pretrain model
+2020-04-30 12:18:06,221 - Model - INFO - Start training...
+2020-04-30 12:18:06,221 - Model - INFO - Epoch 1 (41/400):
+2020-04-30 12:18:34,175 - Model - INFO - The 41th Train Instance Error: 609.611501
+2020-04-30 12:18:43,304 - Model - INFO - Save model...
+2020-04-30 12:18:43,304 - Model - INFO - Saving at log\regression\pointnet2_reg_msg\checkpoints/best_model.pth
+2020-04-30 12:18:43,425 - Model - INFO - The 41th Test Instance Error: 592.999013
+2020-04-30 12:18:43,426 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:18:43,426 - Model - INFO - Epoch 2 (42/400):
+2020-04-30 12:19:09,564 - Model - INFO - The 42th Train Instance Error: 609.896647
+2020-04-30 12:19:19,487 - Model - INFO - The 42th Test Instance Error: 593.078532
+2020-04-30 12:19:19,487 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:19:19,488 - Model - INFO - Epoch 3 (43/400):
+2020-04-30 12:19:45,729 - Model - INFO - The 43th Train Instance Error: 611.173572
+2020-04-30 12:19:55,494 - Model - INFO - The 43th Test Instance Error: 595.074717
+2020-04-30 12:19:55,495 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:19:55,495 - Model - INFO - Epoch 4 (44/400):
+2020-04-30 12:20:21,416 - Model - INFO - The 44th Train Instance Error: 612.000244
+2020-04-30 12:20:30,450 - Model - INFO - The 44th Test Instance Error: 597.746023
+2020-04-30 12:20:30,450 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:20:30,450 - Model - INFO - Epoch 5 (45/400):
+2020-04-30 12:20:58,002 - Model - INFO - The 45th Train Instance Error: 611.849463
+2020-04-30 12:21:08,029 - Model - INFO - The 45th Test Instance Error: 595.274180
+2020-04-30 12:21:08,029 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:21:08,029 - Model - INFO - Epoch 6 (46/400):
+2020-04-30 12:21:34,243 - Model - INFO - The 46th Train Instance Error: 611.813471
+2020-04-30 12:21:43,760 - Model - INFO - The 46th Test Instance Error: 600.176829
+2020-04-30 12:21:43,760 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:21:43,760 - Model - INFO - Epoch 7 (47/400):
+2020-04-30 12:22:09,954 - Model - INFO - The 47th Train Instance Error: 611.394764
+2020-04-30 12:22:19,225 - Model - INFO - The 47th Test Instance Error: 597.833018
+2020-04-30 12:22:19,225 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:22:19,225 - Model - INFO - Epoch 8 (48/400):
+2020-04-30 12:22:45,183 - Model - INFO - The 48th Train Instance Error: 611.200505
+2020-04-30 12:22:54,371 - Model - INFO - The 48th Test Instance Error: 599.996552
+2020-04-30 12:22:54,372 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:22:54,372 - Model - INFO - Epoch 9 (49/400):
+2020-04-30 12:23:20,945 - Model - INFO - The 49th Train Instance Error: 611.039911
+2020-04-30 12:23:30,646 - Model - INFO - The 49th Test Instance Error: 595.556956
+2020-04-30 12:23:30,646 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:23:30,646 - Model - INFO - Epoch 10 (50/400):
+2020-04-30 12:23:56,862 - Model - INFO - The 50th Train Instance Error: 610.944883
+2020-04-30 12:24:06,474 - Model - INFO - The 50th Test Instance Error: 595.995636
+2020-04-30 12:24:06,475 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:24:06,475 - Model - INFO - Epoch 11 (51/400):
+2020-04-30 12:24:33,036 - Model - INFO - The 51th Train Instance Error: 610.524243
+2020-04-30 12:24:43,113 - Model - INFO - The 51th Test Instance Error: 594.941355
+2020-04-30 12:24:43,113 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:24:43,114 - Model - INFO - Epoch 12 (52/400):
+2020-04-30 12:25:08,721 - Model - INFO - The 52th Train Instance Error: 610.221529
+2020-04-30 12:25:18,296 - Model - INFO - The 52th Test Instance Error: 598.266571
+2020-04-30 12:25:18,296 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:25:18,296 - Model - INFO - Epoch 13 (53/400):
+2020-04-30 12:25:44,945 - Model - INFO - The 53th Train Instance Error: 610.417921
+2020-04-30 12:25:54,427 - Model - INFO - The 53th Test Instance Error: 598.818939
+2020-04-30 12:25:54,427 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:25:54,427 - Model - INFO - Epoch 14 (54/400):
+2020-04-30 12:26:20,020 - Model - INFO - The 54th Train Instance Error: 610.097706
+2020-04-30 12:26:29,449 - Model - INFO - The 54th Test Instance Error: 598.176198
+2020-04-30 12:26:29,449 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:26:29,449 - Model - INFO - Epoch 15 (55/400):
+2020-04-30 12:26:55,964 - Model - INFO - The 55th Train Instance Error: 609.811843
+2020-04-30 12:27:05,479 - Model - INFO - The 55th Test Instance Error: 603.733439
+2020-04-30 12:27:05,480 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:27:05,480 - Model - INFO - Epoch 16 (56/400):
+2020-04-30 12:27:31,583 - Model - INFO - The 56th Train Instance Error: 609.750878
+2020-04-30 12:27:41,114 - Model - INFO - The 56th Test Instance Error: 600.971293
+2020-04-30 12:27:41,114 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:27:41,115 - Model - INFO - Epoch 17 (57/400):
+2020-04-30 12:28:06,971 - Model - INFO - The 57th Train Instance Error: 609.719823
+2020-04-30 12:28:16,305 - Model - INFO - The 57th Test Instance Error: 597.347097
+2020-04-30 12:28:16,306 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:28:16,306 - Model - INFO - Epoch 18 (58/400):
+2020-04-30 12:28:42,591 - Model - INFO - The 58th Train Instance Error: 609.581533
+2020-04-30 12:28:52,042 - Model - INFO - The 58th Test Instance Error: 599.838379
+2020-04-30 12:28:52,042 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:28:52,042 - Model - INFO - Epoch 19 (59/400):
+2020-04-30 12:29:17,801 - Model - INFO - The 59th Train Instance Error: 609.348655
+2020-04-30 12:29:27,277 - Model - INFO - The 59th Test Instance Error: 602.834310
+2020-04-30 12:29:27,277 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:29:27,277 - Model - INFO - Epoch 20 (60/400):
+2020-04-30 12:29:53,858 - Model - INFO - The 60th Train Instance Error: 609.199010
+2020-04-30 12:30:03,381 - Model - INFO - The 60th Test Instance Error: 604.365774
+2020-04-30 12:30:03,381 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:30:03,382 - Model - INFO - Epoch 21 (61/400):
+2020-04-30 12:30:29,201 - Model - INFO - The 61th Train Instance Error: 608.944896
+2020-04-30 12:30:38,525 - Model - INFO - The 61th Test Instance Error: 606.899506
+2020-04-30 12:30:38,525 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:30:38,525 - Model - INFO - Epoch 22 (62/400):
+2020-04-30 12:31:04,832 - Model - INFO - The 62th Train Instance Error: 608.752186
+2020-04-30 12:31:14,353 - Model - INFO - The 62th Test Instance Error: 603.678457
+2020-04-30 12:31:14,353 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:31:14,354 - Model - INFO - Epoch 23 (63/400):
+2020-04-30 12:31:40,130 - Model - INFO - The 63th Train Instance Error: 608.768528
+2020-04-30 12:31:49,302 - Model - INFO - The 63th Test Instance Error: 601.919312
+2020-04-30 12:31:49,303 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:31:49,303 - Model - INFO - Epoch 24 (64/400):
+2020-04-30 12:32:15,726 - Model - INFO - The 64th Train Instance Error: 608.834928
+2020-04-30 12:32:25,436 - Model - INFO - The 64th Test Instance Error: 598.773356
+2020-04-30 12:32:25,436 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:32:25,436 - Model - INFO - Epoch 25 (65/400):
+2020-04-30 12:32:51,092 - Model - INFO - The 65th Train Instance Error: 608.645676
+2020-04-30 12:33:00,344 - Model - INFO - The 65th Test Instance Error: 597.227051
+2020-04-30 12:33:00,344 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:33:00,345 - Model - INFO - Epoch 26 (66/400):
+2020-04-30 12:33:27,960 - Model - INFO - The 66th Train Instance Error: 608.622754
+2020-04-30 12:33:37,889 - Model - INFO - The 66th Test Instance Error: 596.798482
+2020-04-30 12:33:37,889 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:33:37,889 - Model - INFO - Epoch 27 (67/400):
+2020-04-30 12:34:03,758 - Model - INFO - The 67th Train Instance Error: 608.486644
+2020-04-30 12:34:13,199 - Model - INFO - The 67th Test Instance Error: 603.111145
+2020-04-30 12:34:13,199 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:34:13,199 - Model - INFO - Epoch 28 (68/400):
+2020-04-30 12:34:39,583 - Model - INFO - The 68th Train Instance Error: 608.407745
+2020-04-30 12:34:49,195 - Model - INFO - The 68th Test Instance Error: 598.427745
+2020-04-30 12:34:49,195 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:34:49,196 - Model - INFO - Epoch 29 (69/400):
+2020-04-30 12:35:15,326 - Model - INFO - The 69th Train Instance Error: 608.327415
+2020-04-30 12:35:26,503 - Model - INFO - The 69th Test Instance Error: 594.121124
+2020-04-30 12:35:26,503 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:35:26,504 - Model - INFO - Epoch 30 (70/400):
+2020-04-30 12:35:53,628 - Model - INFO - The 70th Train Instance Error: 608.353454
+2020-04-30 12:36:03,395 - Model - INFO - The 70th Test Instance Error: 595.216390
+2020-04-30 12:36:03,395 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:36:03,395 - Model - INFO - Epoch 31 (71/400):
+2020-04-30 12:36:29,746 - Model - INFO - The 71th Train Instance Error: 608.314143
+2020-04-30 12:36:39,812 - Model - INFO - The 71th Test Instance Error: 604.000163
+2020-04-30 12:36:39,812 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:36:39,812 - Model - INFO - Epoch 32 (72/400):
+2020-04-30 12:37:07,299 - Model - INFO - The 72th Train Instance Error: 608.214889
+2020-04-30 12:37:16,366 - Model - INFO - The 72th Test Instance Error: 608.161377
+2020-04-30 12:37:16,366 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:37:16,366 - Model - INFO - Epoch 33 (73/400):
+2020-04-30 12:37:42,753 - Model - INFO - The 73th Train Instance Error: 608.074727
+2020-04-30 12:37:53,006 - Model - INFO - The 73th Test Instance Error: 596.576355
+2020-04-30 12:37:53,007 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:37:53,007 - Model - INFO - Epoch 34 (74/400):
+2020-04-30 12:38:19,366 - Model - INFO - The 74th Train Instance Error: 608.054895
+2020-04-30 12:38:29,131 - Model - INFO - The 74th Test Instance Error: 596.509104
+2020-04-30 12:38:29,131 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:38:29,131 - Model - INFO - Epoch 35 (75/400):
+2020-04-30 12:38:55,648 - Model - INFO - The 75th Train Instance Error: 608.054863
+2020-04-30 12:39:04,932 - Model - INFO - The 75th Test Instance Error: 600.083679
+2020-04-30 12:39:04,933 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:39:04,933 - Model - INFO - Epoch 36 (76/400):
+2020-04-30 12:39:31,297 - Model - INFO - The 76th Train Instance Error: 607.977275
+2020-04-30 12:39:40,485 - Model - INFO - The 76th Test Instance Error: 599.508525
+2020-04-30 12:39:40,485 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:39:40,485 - Model - INFO - Epoch 37 (77/400):
+2020-04-30 12:40:07,716 - Model - INFO - The 77th Train Instance Error: 607.876035
+2020-04-30 12:40:17,275 - Model - INFO - The 77th Test Instance Error: 603.026845
+2020-04-30 12:40:17,275 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:40:17,275 - Model - INFO - Epoch 38 (78/400):
+2020-04-30 12:40:42,915 - Model - INFO - The 78th Train Instance Error: 607.856013
+2020-04-30 12:40:52,880 - Model - INFO - The 78th Test Instance Error: 598.679169
+2020-04-30 12:40:52,881 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:40:52,881 - Model - INFO - Epoch 39 (79/400):
+2020-04-30 12:41:20,237 - Model - INFO - The 79th Train Instance Error: 607.835848
+2020-04-30 12:41:31,184 - Model - INFO - The 79th Test Instance Error: 596.449402
+2020-04-30 12:41:31,185 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:41:31,185 - Model - INFO - Epoch 40 (80/400):
+2020-04-30 12:41:57,928 - Model - INFO - The 80th Train Instance Error: 607.704922
+2020-04-30 12:42:08,119 - Model - INFO - The 80th Test Instance Error: 599.887054
+2020-04-30 12:42:08,119 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:42:08,119 - Model - INFO - Epoch 41 (81/400):
+2020-04-30 12:42:34,257 - Model - INFO - The 81th Train Instance Error: 607.585632
+2020-04-30 12:42:43,590 - Model - INFO - The 81th Test Instance Error: 599.503143
+2020-04-30 12:42:43,591 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:42:43,591 - Model - INFO - Epoch 42 (82/400):
+2020-04-30 12:43:10,026 - Model - INFO - The 82th Train Instance Error: 607.550188
+2020-04-30 12:43:20,943 - Model - INFO - The 82th Test Instance Error: 598.807861
+2020-04-30 12:43:20,943 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:43:20,943 - Model - INFO - Epoch 43 (83/400):
+2020-04-30 12:43:47,331 - Model - INFO - The 83th Train Instance Error: 607.423151
+2020-04-30 12:43:56,463 - Model - INFO - The 83th Test Instance Error: 600.114349
+2020-04-30 12:43:56,463 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:43:56,464 - Model - INFO - Epoch 44 (84/400):
+2020-04-30 12:44:22,925 - Model - INFO - The 84th Train Instance Error: 607.462013
+2020-04-30 12:44:33,586 - Model - INFO - The 84th Test Instance Error: 606.052795
+2020-04-30 12:44:33,586 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:44:33,587 - Model - INFO - Epoch 45 (85/400):
+2020-04-30 12:45:00,071 - Model - INFO - The 85th Train Instance Error: 607.488846
+2020-04-30 12:45:09,407 - Model - INFO - The 85th Test Instance Error: 603.515442
+2020-04-30 12:45:09,407 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:45:09,408 - Model - INFO - Epoch 46 (86/400):
+2020-04-30 12:45:35,856 - Model - INFO - The 86th Train Instance Error: 607.427241
+2020-04-30 12:45:49,236 - Model - INFO - The 86th Test Instance Error: 599.006470
+2020-04-30 12:45:49,236 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:45:49,237 - Model - INFO - Epoch 47 (87/400):
+2020-04-30 12:46:22,015 - Model - INFO - The 87th Train Instance Error: 607.323729
+2020-04-30 12:46:31,715 - Model - INFO - The 87th Test Instance Error: 598.054006
+2020-04-30 12:46:31,715 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:46:31,715 - Model - INFO - Epoch 48 (88/400):
+2020-04-30 12:46:58,236 - Model - INFO - The 88th Train Instance Error: 607.278118
+2020-04-30 12:47:07,302 - Model - INFO - The 88th Test Instance Error: 600.223674
+2020-04-30 12:47:07,302 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:47:07,302 - Model - INFO - Epoch 49 (89/400):
+2020-04-30 12:47:33,875 - Model - INFO - The 89th Train Instance Error: 607.156509
+2020-04-30 12:47:43,752 - Model - INFO - The 89th Test Instance Error: 606.481466
+2020-04-30 12:47:43,752 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:47:43,752 - Model - INFO - Epoch 50 (90/400):
+2020-04-30 12:48:10,365 - Model - INFO - The 90th Train Instance Error: 607.065132
+2020-04-30 12:48:19,603 - Model - INFO - The 90th Test Instance Error: 601.346792
+2020-04-30 12:48:19,603 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:48:19,603 - Model - INFO - Epoch 51 (91/400):
+2020-04-30 12:48:45,822 - Model - INFO - The 91th Train Instance Error: 607.016629
+2020-04-30 12:48:55,913 - Model - INFO - The 91th Test Instance Error: 599.643321
+2020-04-30 12:48:55,913 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:48:55,913 - Model - INFO - Epoch 52 (92/400):
+2020-04-30 12:49:22,060 - Model - INFO - The 92th Train Instance Error: 606.959370
+2020-04-30 12:49:31,429 - Model - INFO - The 92th Test Instance Error: 599.845612
+2020-04-30 12:49:31,429 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:49:31,430 - Model - INFO - Epoch 53 (93/400):
+2020-04-30 12:49:57,901 - Model - INFO - The 93th Train Instance Error: 606.924104
+2020-04-30 12:50:07,555 - Model - INFO - The 93th Test Instance Error: 599.703471
+2020-04-30 12:50:07,555 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:50:07,556 - Model - INFO - Epoch 54 (94/400):
+2020-04-30 12:50:33,320 - Model - INFO - The 94th Train Instance Error: 606.842928
+2020-04-30 12:50:43,251 - Model - INFO - The 94th Test Instance Error: 596.799591
+2020-04-30 12:50:43,251 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:50:43,251 - Model - INFO - Epoch 55 (95/400):
+2020-04-30 12:51:09,148 - Model - INFO - The 95th Train Instance Error: 606.748978
+2020-04-30 12:51:19,360 - Model - INFO - The 95th Test Instance Error: 598.273356
+2020-04-30 12:51:19,360 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:51:19,360 - Model - INFO - Epoch 56 (96/400):
+2020-04-30 12:51:45,957 - Model - INFO - The 96th Train Instance Error: 606.690942
+2020-04-30 12:51:56,160 - Model - INFO - The 96th Test Instance Error: 600.967255
+2020-04-30 12:51:56,160 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:51:56,160 - Model - INFO - Epoch 57 (97/400):
+2020-04-30 12:52:22,360 - Model - INFO - The 97th Train Instance Error: 606.581799
+2020-04-30 12:52:31,739 - Model - INFO - The 97th Test Instance Error: 601.367706
+2020-04-30 12:52:31,739 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:52:31,739 - Model - INFO - Epoch 58 (98/400):
+2020-04-30 12:52:57,977 - Model - INFO - The 98th Train Instance Error: 606.562763
+2020-04-30 12:53:07,793 - Model - INFO - The 98th Test Instance Error: 601.159220
+2020-04-30 12:53:07,793 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:53:07,793 - Model - INFO - Epoch 59 (99/400):
+2020-04-30 12:53:34,169 - Model - INFO - The 99th Train Instance Error: 606.475515
+2020-04-30 12:53:44,091 - Model - INFO - The 99th Test Instance Error: 604.223592
+2020-04-30 12:53:44,092 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:53:44,092 - Model - INFO - Epoch 60 (100/400):
+2020-04-30 12:54:10,334 - Model - INFO - The 100th Train Instance Error: 606.407528
+2020-04-30 12:54:19,845 - Model - INFO - The 100th Test Instance Error: 602.791189
+2020-04-30 12:54:19,846 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:54:19,846 - Model - INFO - Epoch 61 (101/400):
+2020-04-30 12:54:46,051 - Model - INFO - The 101th Train Instance Error: 606.318485
+2020-04-30 12:54:55,880 - Model - INFO - The 101th Test Instance Error: 602.213165
+2020-04-30 12:54:55,880 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:54:55,880 - Model - INFO - Epoch 62 (102/400):
+2020-04-30 12:55:22,057 - Model - INFO - The 102th Train Instance Error: 606.269205
+2020-04-30 12:55:31,619 - Model - INFO - The 102th Test Instance Error: 600.499817
+2020-04-30 12:55:31,619 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:55:31,619 - Model - INFO - Epoch 63 (103/400):
+2020-04-30 12:55:57,447 - Model - INFO - The 103th Train Instance Error: 606.214872
+2020-04-30 12:56:07,413 - Model - INFO - The 103th Test Instance Error: 602.671590
+2020-04-30 12:56:07,413 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:56:07,413 - Model - INFO - Epoch 64 (104/400):
+2020-04-30 12:56:33,661 - Model - INFO - The 104th Train Instance Error: 606.235023
+2020-04-30 12:56:43,377 - Model - INFO - The 104th Test Instance Error: 602.591858
+2020-04-30 12:56:43,377 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:56:43,377 - Model - INFO - Epoch 65 (105/400):
+2020-04-30 12:57:09,300 - Model - INFO - The 105th Train Instance Error: 606.221808
+2020-04-30 12:57:19,423 - Model - INFO - The 105th Test Instance Error: 599.263743
+2020-04-30 12:57:19,423 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:57:19,423 - Model - INFO - Epoch 66 (106/400):
+2020-04-30 12:57:45,979 - Model - INFO - The 106th Train Instance Error: 606.209856
+2020-04-30 12:57:56,331 - Model - INFO - The 106th Test Instance Error: 600.363932
+2020-04-30 12:57:56,331 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:57:56,331 - Model - INFO - Epoch 67 (107/400):
+2020-04-30 12:58:22,817 - Model - INFO - The 107th Train Instance Error: 606.237974
+2020-04-30 12:58:35,286 - Model - INFO - The 107th Test Instance Error: 602.753276
+2020-04-30 12:58:35,286 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:58:35,286 - Model - INFO - Epoch 68 (108/400):
+2020-04-30 12:59:04,114 - Model - INFO - The 108th Train Instance Error: 606.205340
+2020-04-30 12:59:15,887 - Model - INFO - The 108th Test Instance Error: 604.970652
+2020-04-30 12:59:15,887 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:59:15,887 - Model - INFO - Epoch 69 (109/400):
+2020-04-30 12:59:43,654 - Model - INFO - The 109th Train Instance Error: 606.141600
+2020-04-30 12:59:54,526 - Model - INFO - The 109th Test Instance Error: 605.682485
+2020-04-30 12:59:54,530 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 12:59:54,533 - Model - INFO - Epoch 70 (110/400):
+2020-04-30 13:00:23,096 - Model - INFO - The 110th Train Instance Error: 606.137046
+2020-04-30 13:00:34,239 - Model - INFO - The 110th Test Instance Error: 603.152069
+2020-04-30 13:00:34,240 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:00:34,240 - Model - INFO - Epoch 71 (111/400):
+2020-04-30 13:01:03,554 - Model - INFO - The 111th Train Instance Error: 606.083817
+2020-04-30 13:01:17,119 - Model - INFO - The 111th Test Instance Error: 601.056549
+2020-04-30 13:01:17,119 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:01:17,119 - Model - INFO - Epoch 72 (112/400):
+2020-04-30 13:01:45,422 - Model - INFO - The 112th Train Instance Error: 606.055515
+2020-04-30 13:01:56,764 - Model - INFO - The 112th Test Instance Error: 601.937185
+2020-04-30 13:01:56,764 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:01:56,764 - Model - INFO - Epoch 73 (113/400):
+2020-04-30 13:02:27,162 - Model - INFO - The 113th Train Instance Error: 606.060882
+2020-04-30 13:02:39,616 - Model - INFO - The 113th Test Instance Error: 603.422679
+2020-04-30 13:02:39,617 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:02:39,617 - Model - INFO - Epoch 74 (114/400):
+2020-04-30 13:03:08,768 - Model - INFO - The 114th Train Instance Error: 606.047515
+2020-04-30 13:03:20,138 - Model - INFO - The 114th Test Instance Error: 601.303284
+2020-04-30 13:03:20,138 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:03:20,138 - Model - INFO - Epoch 75 (115/400):
+2020-04-30 13:03:48,840 - Model - INFO - The 115th Train Instance Error: 606.021026
+2020-04-30 13:03:59,558 - Model - INFO - The 115th Test Instance Error: 603.274536
+2020-04-30 13:03:59,558 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:03:59,559 - Model - INFO - Epoch 76 (116/400):
+2020-04-30 13:04:26,972 - Model - INFO - The 116th Train Instance Error: 605.993352
+2020-04-30 13:04:41,727 - Model - INFO - The 116th Test Instance Error: 603.504852
+2020-04-30 13:04:41,727 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:04:41,727 - Model - INFO - Epoch 77 (117/400):
+2020-04-30 13:05:09,885 - Model - INFO - The 117th Train Instance Error: 605.958190
+2020-04-30 13:05:20,070 - Model - INFO - The 117th Test Instance Error: 604.728048
+2020-04-30 13:05:20,070 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:05:20,071 - Model - INFO - Epoch 78 (118/400):
+2020-04-30 13:05:47,003 - Model - INFO - The 118th Train Instance Error: 605.937113
+2020-04-30 13:05:56,912 - Model - INFO - The 118th Test Instance Error: 607.056081
+2020-04-30 13:05:56,912 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:05:56,912 - Model - INFO - Epoch 79 (119/400):
+2020-04-30 13:06:23,510 - Model - INFO - The 119th Train Instance Error: 605.931030
+2020-04-30 13:06:33,164 - Model - INFO - The 119th Test Instance Error: 605.615875
+2020-04-30 13:06:33,164 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:06:33,164 - Model - INFO - Epoch 80 (120/400):
+2020-04-30 13:07:00,555 - Model - INFO - The 120th Train Instance Error: 605.902011
+2020-04-30 13:07:11,471 - Model - INFO - The 120th Test Instance Error: 607.952087
+2020-04-30 13:07:11,472 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:07:11,472 - Model - INFO - Epoch 81 (121/400):
+2020-04-30 13:07:39,016 - Model - INFO - The 121th Train Instance Error: 605.870381
+2020-04-30 13:07:49,718 - Model - INFO - The 121th Test Instance Error: 606.515137
+2020-04-30 13:07:49,718 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:07:49,718 - Model - INFO - Epoch 82 (122/400):
+2020-04-30 13:08:17,890 - Model - INFO - The 122th Train Instance Error: 605.860014
+2020-04-30 13:08:27,553 - Model - INFO - The 122th Test Instance Error: 605.175618
+2020-04-30 13:08:27,553 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:08:27,553 - Model - INFO - Epoch 83 (123/400):
+2020-04-30 13:08:55,016 - Model - INFO - The 123th Train Instance Error: 605.831319
+2020-04-30 13:09:05,558 - Model - INFO - The 123th Test Instance Error: 605.666758
+2020-04-30 13:09:05,558 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:09:05,558 - Model - INFO - Epoch 84 (124/400):
+2020-04-30 13:09:32,036 - Model - INFO - The 124th Train Instance Error: 605.762887
+2020-04-30 13:09:41,435 - Model - INFO - The 124th Test Instance Error: 604.513713
+2020-04-30 13:09:41,435 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:09:41,435 - Model - INFO - Epoch 85 (125/400):
+2020-04-30 13:10:07,927 - Model - INFO - The 125th Train Instance Error: 605.721965
+2020-04-30 13:10:18,420 - Model - INFO - The 125th Test Instance Error: 602.717489
+2020-04-30 13:10:18,420 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:10:18,420 - Model - INFO - Epoch 86 (126/400):
+2020-04-30 13:10:47,094 - Model - INFO - The 126th Train Instance Error: 605.687031
+2020-04-30 13:10:56,729 - Model - INFO - The 126th Test Instance Error: 604.552541
+2020-04-30 13:10:56,730 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:10:56,730 - Model - INFO - Epoch 87 (127/400):
+2020-04-30 13:11:22,935 - Model - INFO - The 127th Train Instance Error: 605.670524
+2020-04-30 13:11:32,820 - Model - INFO - The 127th Test Instance Error: 604.425262
+2020-04-30 13:11:32,820 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:11:32,821 - Model - INFO - Epoch 88 (128/400):
+2020-04-30 13:12:00,152 - Model - INFO - The 128th Train Instance Error: 605.623190
+2020-04-30 13:12:10,815 - Model - INFO - The 128th Test Instance Error: 604.667674
+2020-04-30 13:12:10,815 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:12:10,815 - Model - INFO - Epoch 89 (129/400):
+2020-04-30 13:12:41,810 - Model - INFO - The 129th Train Instance Error: 605.593623
+2020-04-30 13:12:51,598 - Model - INFO - The 129th Test Instance Error: 605.655212
+2020-04-30 13:12:51,598 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:12:51,598 - Model - INFO - Epoch 90 (130/400):
+2020-04-30 13:13:19,957 - Model - INFO - The 130th Train Instance Error: 605.588457
+2020-04-30 13:13:29,354 - Model - INFO - The 130th Test Instance Error: 605.549276
+2020-04-30 13:13:29,354 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:13:29,354 - Model - INFO - Epoch 91 (131/400):
+2020-04-30 13:13:56,789 - Model - INFO - The 131th Train Instance Error: 605.551342
+2020-04-30 13:14:06,503 - Model - INFO - The 131th Test Instance Error: 604.340647
+2020-04-30 13:14:06,503 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:14:06,504 - Model - INFO - Epoch 92 (132/400):
+2020-04-30 13:14:34,862 - Model - INFO - The 132th Train Instance Error: 605.560693
+2020-04-30 13:14:44,376 - Model - INFO - The 132th Test Instance Error: 605.574738
+2020-04-30 13:14:44,377 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:14:44,377 - Model - INFO - Epoch 93 (133/400):
+2020-04-30 13:15:11,079 - Model - INFO - The 133th Train Instance Error: 605.510402
+2020-04-30 13:15:23,220 - Model - INFO - The 133th Test Instance Error: 603.523671
+2020-04-30 13:15:23,220 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:15:23,220 - Model - INFO - Epoch 94 (134/400):
+2020-04-30 13:15:50,100 - Model - INFO - The 134th Train Instance Error: 605.511907
+2020-04-30 13:15:59,943 - Model - INFO - The 134th Test Instance Error: 603.964081
+2020-04-30 13:15:59,943 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:15:59,943 - Model - INFO - Epoch 95 (135/400):
+2020-04-30 13:16:26,739 - Model - INFO - The 135th Train Instance Error: 605.482115
+2020-04-30 13:16:36,628 - Model - INFO - The 135th Test Instance Error: 602.872213
+2020-04-30 13:16:36,628 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:16:36,628 - Model - INFO - Epoch 96 (136/400):
+2020-04-30 13:17:04,300 - Model - INFO - The 136th Train Instance Error: 605.459691
+2020-04-30 13:17:17,724 - Model - INFO - The 136th Test Instance Error: 601.857564
+2020-04-30 13:17:17,724 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:17:17,725 - Model - INFO - Epoch 97 (137/400):
+2020-04-30 13:17:47,774 - Model - INFO - The 137th Train Instance Error: 605.431984
+2020-04-30 13:17:57,797 - Model - INFO - The 137th Test Instance Error: 603.552480
+2020-04-30 13:17:57,797 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:17:57,798 - Model - INFO - Epoch 98 (138/400):
+2020-04-30 13:18:25,057 - Model - INFO - The 138th Train Instance Error: 605.406807
+2020-04-30 13:18:36,338 - Model - INFO - The 138th Test Instance Error: 605.060109
+2020-04-30 13:18:36,339 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:18:36,339 - Model - INFO - Epoch 99 (139/400):
+2020-04-30 13:19:04,415 - Model - INFO - The 139th Train Instance Error: 605.381654
+2020-04-30 13:19:14,103 - Model - INFO - The 139th Test Instance Error: 605.154226
+2020-04-30 13:19:14,103 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:19:14,104 - Model - INFO - Epoch 100 (140/400):
+2020-04-30 13:19:40,987 - Model - INFO - The 140th Train Instance Error: 605.379796
+2020-04-30 13:19:50,797 - Model - INFO - The 140th Test Instance Error: 606.374929
+2020-04-30 13:19:50,797 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:19:50,797 - Model - INFO - Epoch 101 (141/400):
+2020-04-30 13:20:16,949 - Model - INFO - The 141th Train Instance Error: 605.358926
+2020-04-30 13:20:26,808 - Model - INFO - The 141th Test Instance Error: 605.625448
+2020-04-30 13:20:26,808 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:20:26,808 - Model - INFO - Epoch 102 (142/400):
+2020-04-30 13:20:53,923 - Model - INFO - The 142th Train Instance Error: 605.325993
+2020-04-30 13:21:05,468 - Model - INFO - The 142th Test Instance Error: 602.916016
+2020-04-30 13:21:05,468 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:21:05,468 - Model - INFO - Epoch 103 (143/400):
+2020-04-30 13:21:37,946 - Model - INFO - The 143th Train Instance Error: 605.310277
+2020-04-30 13:21:48,156 - Model - INFO - The 143th Test Instance Error: 605.943736
+2020-04-30 13:21:48,156 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:21:48,156 - Model - INFO - Epoch 104 (144/400):
+2020-04-30 13:22:15,827 - Model - INFO - The 144th Train Instance Error: 605.289114
+2020-04-30 13:22:26,481 - Model - INFO - The 144th Test Instance Error: 603.671316
+2020-04-30 13:22:26,484 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:22:26,486 - Model - INFO - Epoch 105 (145/400):
+2020-04-30 13:22:54,637 - Model - INFO - The 145th Train Instance Error: 605.273584
+2020-04-30 13:23:06,095 - Model - INFO - The 145th Test Instance Error: 602.803182
+2020-04-30 13:23:06,095 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:23:06,095 - Model - INFO - Epoch 106 (146/400):
+2020-04-30 13:23:36,465 - Model - INFO - The 146th Train Instance Error: 605.260955
+2020-04-30 13:23:48,497 - Model - INFO - The 146th Test Instance Error: 602.528463
+2020-04-30 13:23:48,497 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:23:48,497 - Model - INFO - Epoch 107 (147/400):
+2020-04-30 13:24:18,393 - Model - INFO - The 147th Train Instance Error: 605.231575
+2020-04-30 13:24:29,770 - Model - INFO - The 147th Test Instance Error: 602.372030
+2020-04-30 13:24:29,770 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:24:29,770 - Model - INFO - Epoch 108 (148/400):
+2020-04-30 13:24:57,680 - Model - INFO - The 148th Train Instance Error: 605.228742
+2020-04-30 13:25:08,508 - Model - INFO - The 148th Test Instance Error: 604.805796
+2020-04-30 13:25:08,508 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:25:08,508 - Model - INFO - Epoch 109 (149/400):
+2020-04-30 13:25:36,337 - Model - INFO - The 149th Train Instance Error: 605.192240
+2020-04-30 13:25:47,328 - Model - INFO - The 149th Test Instance Error: 604.046824
+2020-04-30 13:25:47,328 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:25:47,328 - Model - INFO - Epoch 110 (150/400):
+2020-04-30 13:26:15,103 - Model - INFO - The 150th Train Instance Error: 605.173592
+2020-04-30 13:26:26,200 - Model - INFO - The 150th Test Instance Error: 603.457794
+2020-04-30 13:26:26,200 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:26:26,200 - Model - INFO - Epoch 111 (151/400):
+2020-04-30 13:26:55,225 - Model - INFO - The 151th Train Instance Error: 605.162396
+2020-04-30 13:27:06,487 - Model - INFO - The 151th Test Instance Error: 602.724823
+2020-04-30 13:27:06,487 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:27:06,487 - Model - INFO - Epoch 112 (152/400):
+2020-04-30 13:27:36,651 - Model - INFO - The 152th Train Instance Error: 605.126109
+2020-04-30 13:27:47,605 - Model - INFO - The 152th Test Instance Error: 602.395396
+2020-04-30 13:27:47,605 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:27:47,605 - Model - INFO - Epoch 113 (153/400):
+2020-04-30 13:28:14,101 - Model - INFO - The 153th Train Instance Error: 605.100615
+2020-04-30 13:28:24,649 - Model - INFO - The 153th Test Instance Error: 602.194051
+2020-04-30 13:28:24,649 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:28:24,649 - Model - INFO - Epoch 114 (154/400):
+2020-04-30 13:28:51,558 - Model - INFO - The 154th Train Instance Error: 605.083920
+2020-04-30 13:29:00,801 - Model - INFO - The 154th Test Instance Error: 603.602956
+2020-04-30 13:29:00,803 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:29:00,803 - Model - INFO - Epoch 115 (155/400):
+2020-04-30 13:29:27,818 - Model - INFO - The 155th Train Instance Error: 605.081472
+2020-04-30 13:29:38,210 - Model - INFO - The 155th Test Instance Error: 603.779317
+2020-04-30 13:29:38,211 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:29:38,211 - Model - INFO - Epoch 116 (156/400):
+2020-04-30 13:30:04,965 - Model - INFO - The 156th Train Instance Error: 605.047967
+2020-04-30 13:30:15,745 - Model - INFO - The 156th Test Instance Error: 604.400075
+2020-04-30 13:30:15,746 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:30:15,746 - Model - INFO - Epoch 117 (157/400):
+2020-04-30 13:30:42,791 - Model - INFO - The 157th Train Instance Error: 605.009059
+2020-04-30 13:30:53,065 - Model - INFO - The 157th Test Instance Error: 603.333496
+2020-04-30 13:30:53,065 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:30:53,066 - Model - INFO - Epoch 118 (158/400):
+2020-04-30 13:31:20,066 - Model - INFO - The 158th Train Instance Error: 604.992115
+2020-04-30 13:31:29,722 - Model - INFO - The 158th Test Instance Error: 603.394541
+2020-04-30 13:31:29,723 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:31:29,723 - Model - INFO - Epoch 119 (159/400):
+2020-04-30 13:31:55,837 - Model - INFO - The 159th Train Instance Error: 604.969850
+2020-04-30 13:32:05,717 - Model - INFO - The 159th Test Instance Error: 603.717763
+2020-04-30 13:32:05,717 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:32:05,717 - Model - INFO - Epoch 120 (160/400):
+2020-04-30 13:32:32,864 - Model - INFO - The 160th Train Instance Error: 604.935229
+2020-04-30 13:32:43,200 - Model - INFO - The 160th Test Instance Error: 604.659017
+2020-04-30 13:32:43,200 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:32:43,200 - Model - INFO - Epoch 121 (161/400):
+2020-04-30 13:33:09,544 - Model - INFO - The 161th Train Instance Error: 604.935536
+2020-04-30 13:33:19,665 - Model - INFO - The 161th Test Instance Error: 603.412435
+2020-04-30 13:33:19,665 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:33:19,665 - Model - INFO - Epoch 122 (162/400):
+2020-04-30 13:33:47,382 - Model - INFO - The 162th Train Instance Error: 604.912536
+2020-04-30 13:33:59,451 - Model - INFO - The 162th Test Instance Error: 602.566772
+2020-04-30 13:33:59,451 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:33:59,451 - Model - INFO - Epoch 123 (163/400):
+2020-04-30 13:34:27,145 - Model - INFO - The 163th Train Instance Error: 604.882692
+2020-04-30 13:34:38,074 - Model - INFO - The 163th Test Instance Error: 604.860138
+2020-04-30 13:34:38,075 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:34:38,075 - Model - INFO - Epoch 124 (164/400):
+2020-04-30 13:35:07,115 - Model - INFO - The 164th Train Instance Error: 604.858188
+2020-04-30 13:35:17,795 - Model - INFO - The 164th Test Instance Error: 602.926544
+2020-04-30 13:35:17,796 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:35:17,796 - Model - INFO - Epoch 125 (165/400):
+2020-04-30 13:35:44,383 - Model - INFO - The 165th Train Instance Error: 604.835652
+2020-04-30 13:35:53,746 - Model - INFO - The 165th Test Instance Error: 603.132426
+2020-04-30 13:35:53,746 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:35:53,747 - Model - INFO - Epoch 126 (166/400):
+2020-04-30 13:36:19,935 - Model - INFO - The 166th Train Instance Error: 604.826249
+2020-04-30 13:36:29,402 - Model - INFO - The 166th Test Instance Error: 602.262075
+2020-04-30 13:36:29,403 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:36:29,403 - Model - INFO - Epoch 127 (167/400):
+2020-04-30 13:36:55,298 - Model - INFO - The 167th Train Instance Error: 604.815231
+2020-04-30 13:37:05,039 - Model - INFO - The 167th Test Instance Error: 600.919922
+2020-04-30 13:37:05,039 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:37:05,039 - Model - INFO - Epoch 128 (168/400):
+2020-04-30 13:37:31,464 - Model - INFO - The 168th Train Instance Error: 604.816898
+2020-04-30 13:37:40,816 - Model - INFO - The 168th Test Instance Error: 602.071564
+2020-04-30 13:37:40,816 - Model - INFO - Best Instance Error: 592.999013 
+
+2020-04-30 13:37:40,816 - Model - INFO - Epoch 129 (169/400):
+2020-04-30 13:37:51,247 - Model - INFO - PARAMETER ...
+2020-04-30 13:37:51,247 - Model - INFO - Namespace(batch_size=5, decay_rate=0.0001, epoch=400, gpu='0', learning_rate=0.001, log_dir='pointnet2_reg_msg', model='pointnet2_reg_msg', normal=False, num_joint=6, num_point=1024, optimizer='Adam', shape='body')
+2020-04-30 13:37:51,247 - Model - INFO - Load dataset ...
+2020-04-30 13:37:54,487 - Model - INFO - Use pretrain model
+2020-04-30 13:37:54,488 - Model - INFO - Start training...
+2020-04-30 13:37:54,488 - Model - INFO - Epoch 1 (42/400):
+2020-04-30 13:38:23,761 - Model - INFO - PARAMETER ...
+2020-04-30 13:38:23,761 - Model - INFO - Namespace(batch_size=5, decay_rate=0.0001, epoch=400, gpu='0', learning_rate=0.001, log_dir='pointnet2_reg_msg', model='pointnet2_reg_msg', normal=False, num_joint=6, num_point=1024, optimizer='Adam', shape='body')
+2020-04-30 13:38:23,761 - Model - INFO - Load dataset ...
+2020-04-30 13:38:26,811 - Model - INFO - Use pretrain model
+2020-04-30 13:38:26,811 - Model - INFO - Start training...
+2020-04-30 13:38:26,811 - Model - INFO - Epoch 1 (42/400):
+2020-04-30 13:38:54,622 - Model - INFO - The 42th Train Instance Error: 612.163020
+2020-04-30 13:39:04,461 - Model - INFO - Save model...
+2020-04-30 13:39:04,461 - Model - INFO - Saving at log\regression\pointnet2_reg_msg\checkpoints/best_model.pth
+2020-04-30 13:39:04,584 - Model - INFO - The 42th Test Instance Error: 594.363892
+2020-04-30 13:39:04,584 - Model - INFO - Best Instance Error: 594.363892 
+
+2020-04-30 13:39:04,584 - Model - INFO - Epoch 2 (43/400):
+2020-04-30 13:39:30,909 - Model - INFO - The 43th Train Instance Error: 611.390414
+2020-04-30 13:39:40,754 - Model - INFO - The 43th Test Instance Error: 603.453913
+2020-04-30 13:39:40,755 - Model - INFO - Best Instance Error: 594.363892 
+
+2020-04-30 13:39:40,755 - Model - INFO - Epoch 3 (44/400):

@@ -5,9 +5,10 @@ from torch.utils.data import Dataset
 def pc_normalize(pc):
     centroid = np.mean(pc, axis=0)
     pc = pc - centroid
-    m = np.max(np.sqrt(np.sum(pc**2, axis=1)))
-    pc = pc / m
-    return pc
+    scale = np.max(np.sqrt(np.sum(pc**2, axis=1)))
+    pc = pc / scale
+    return pc, scale, centroid
+
 
 def farthest_point_sample(point, npoint):
     """
@@ -42,6 +43,7 @@ class NyuHandDataLoader(Dataset):
         self.uniform = uniform
         self.normal_channel = normal_channel
 
+
         # assert（断言）用于判断一个表达式，在表达式条件为 false 的时候触发异常。
         assert (split == 'train_body' or split == 'test_body' or split == 'train_hand' or split == 'test_hand')
 
@@ -58,14 +60,6 @@ class NyuHandDataLoader(Dataset):
         self.cache_size = cache_size  # how many data points to cache in memory
         self.cache = {}  # from index to (point_set, cls) tuple
 
-        index = 1
-        hand_input = np.loadtxt(self.hand_all[index][1]).astype(np.float32)  # 读取点云txt文件，并转换为numpy
-        hand_joint = np.array(self.hand_all[index][2]).astype(np.float32)  # 把关节点的坐标转换成 numpy 格式
-
-        hand_input[:, 0:3] = pc_normalize(hand_input[:, 0:3])
-
-
-
 
     # 根据索引获取数据的方法
     def __getitem__(self, index):
@@ -81,18 +75,18 @@ class NyuHandDataLoader(Dataset):
                 hand_input = farthest_point_sample(hand_input, self.npoints)
             else:
                 hand_input = hand_input[0:self.npoints, :]
-            hand_input[:, 0:3] = pc_normalize(hand_input[:, 0:3])
 
-            if self.normal_channel:
-                pass
+            if not self.normal_channel:
+                hand_input = hand_input[:, 0:3]
+
+            # 归一化
+            # scale 是缩小的比例，centroid 是中心
+            hand_input[:, 0:3], scale, centroid = pc_normalize(hand_input[:, 0:3])  # 做归一化
 
             if len(self.cache) < self.cache_size:
-                self.cache[index] = (hand_input, hand_joint)
+                self.cache[index] = (hand_input, hand_joint, scale, centroid)
 
-
-
-
-        return hand_input, hand_joint
+        return hand_input, hand_joint, scale, centroid
 
 
     # 获取数据的长度
@@ -103,4 +97,4 @@ if __name__ == '__main__':
     import torch
 
     data = NyuHandDataLoader('../data/nyu_hand_dataset_v2/', split='train_hand', uniform=True, normal_channel=False, )
-    DataLoader = torch.utils.data.DataLoader(data, batch_size=10, shuffle=True)
+    DataLoader = torch.utils.data.DataLoader(data, batch_size=10, shuffle=False)

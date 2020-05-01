@@ -3,7 +3,6 @@ Author: Jack Leung
 Date: April 2020
 Note：这是梁某基于分类的方法，魔改的手势关键点的回归
 """
-from data_utils.ModelNetDataLoader import ModelNetDataLoader
 from data_utils.NyuHandDataLoader import NyuHandDataLoader
 import argparse
 import numpy as np
@@ -17,7 +16,7 @@ import sys
 import provider
 import importlib
 import shutil
-import torch.nn.functional as F
+
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = BASE_DIR
@@ -30,11 +29,11 @@ sys.path.append(os.path.join(ROOT_DIR, 'models'))
 def parse_args():
     '''PARAMETERS'''
     parser = argparse.ArgumentParser('PointNet')
-    parser.add_argument('--model', default='pointnet2_reg_msg', help='model name [default: pointnet_cls]')
-    parser.add_argument('--log_dir', type=str, default='pointnet2_reg_msg', help='experiment root')
     parser.add_argument('--shape', type=str, default='body', help='body or hand')
     parser.add_argument('--num_joint', default=6, type=int, help='number of joint in hand [default: 36*3]')
 
+    parser.add_argument('--model', default='pointnet2_reg_msg', help='model name [default: pointnet_cls]')
+    parser.add_argument('--log_dir', type=str, default='pointnet2_reg_msg', help='experiment root')
     parser.add_argument('--batch_size', type=int, default=5, help='batch size in training [default: 24]')
     parser.add_argument('--epoch',  default=400, type=int, help='number of epoch in training [default: 200]')
     parser.add_argument('--gpu', type=str, default='0', help='specify gpu device [default: 0]')
@@ -49,11 +48,22 @@ def parse_args():
 def test(model, loader):
     mean_dist = []
     for j, data in tqdm(enumerate(loader), total=len(loader)):
-        points, target = data
+        points, target, scale, centroid = data
         points = points.transpose(2, 1)
         points, target = points.cuda(), target.cuda()
         classifier = model.eval()
         pred, _ = classifier(points)
+
+        # 依据scale, centroid，对 pred 做还原
+        pred_reduction = pred.cpu().data.numpy()
+        pred_reduction = pred_reduction * np.tile(scale, (args.num_joint * 3, 1)).transpose(1, 0)
+        pred_reduction = pred_reduction + np.tile(centroid, (1, args.num_joint))
+        pred_reduction = torch.Tensor(pred_reduction)
+        pred_reduction = pred_reduction.cuda()
+
+        # 由于pred参数中除data外还有很多参数与求导有关，所以要将修正的值替换掉原值
+        pred.data = pred_reduction.data
+
         # 记录该 batch 的误差率
         dist = (pred - target) ** 2
         dist = dist.reshape(args.batch_size, args.num_joint, -1)
@@ -61,8 +71,9 @@ def test(model, loader):
         mean_dist.append(torch.mean(torch.mean(dist, 1)).item())  # 记录该 batch 的误差率
 
     # 计算该 epoch 的误差率
-    test_instance_error = np.mean(mean_dist) # 该 epoch 下，总的正确率
-    return test_instance_error
+    test_instance_loss = np.mean(mean_dist) # 该 epoch 下，总的正确率
+    return test_instance_loss
+
 
 
 def main(args):
@@ -145,8 +156,8 @@ def main(args):
     scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=20, gamma=0.7)
     global_epoch = 0
     global_step = 0
-    best_instance_error = 1000.0
-    mean_dist = [] # 记录每次训练后，该batch的争取率
+    best_instance_loss = 1000.0
+    mean_loss = [] # 记录每次训练后，该batch的争取率
 
 
     '''TRANING 训练'''
@@ -157,9 +168,9 @@ def main(args):
         scheduler.step()
         for batch_id, data in tqdm(enumerate(trainDataLoader, 0), total=len(trainDataLoader), smoothing=0.9):
             # 提取 mini_batch
-            points, target = data
+            points, target, scale, centroid = data
             # points 是当前 batch 的数据  target 是当前 batch 的标签
-            points = points.data.numpy()    # points [B, Nsample, 坐标+法向量]
+            points = points.data.numpy()  # points [B, Nsample, 坐标+法向量]
             points = provider.random_point_dropout(points, max_dropout_ratio=0.875) # points 做随机的 dropout
             points[:,:, 0:3] = provider.random_scale_point_cloud(points[:,:, 0:3])  # points 做随机比例的放缩
             points[:,:, 0:3] = provider.shift_point_cloud(points[:,:, 0:3])         # points 做随机幅度的位移
@@ -173,41 +184,49 @@ def main(args):
             pred, trans_feat = classifier(points)   # pred 网络的输出， trans_feat 是输入的特征值，就是三个sa层后的输出
                                                     # pred [Batch_size, num_joint*3]
                                                     # trans_feat [Batch_size, SA层的输出大小, 1]
+
+            # 依据scale, centroid，对 pred 做还原
+            pred_reduction = pred.cpu().data.numpy()
+            pred_reduction = pred_reduction * np.tile(scale,(args.num_joint*3,1)).transpose(1,0)
+            pred_reduction = pred_reduction + np.tile(centroid,(1,args.num_joint))
+            pred_reduction = torch.Tensor(pred_reduction)
+            pred_reduction = pred_reduction.cuda()
+
+            # 由于pred参数中除data外还有很多参数与求导有关，所以要将修正的值替换掉原值
+            pred.data = pred_reduction.data
+
             loss = criterion(pred, target, trans_feat)
             loss.backward()
             optimizer.step()
             global_step += 1
 
             # 记录该 batch 的误差率
-            dist = (pred - target) ** 2
-            dist = dist.reshape(args.batch_size,args.num_joint,-1)
-            dist = torch.sqrt(torch.sum(dist, 2))  # [Batch_size,36] 36个关键点的坐标，预测值与标签值的欧氏距离
-            mean_dist.append(torch.mean(torch.mean(dist,1)).item()) # 记录该 batch 的误差率
+            mean_loss.append(loss.item()) # 记录该 batch 的误差率
 
-        # 计算该 epoch 的误差率
-        train_instance_error = np.mean(mean_dist)
-        log_string('The %dth Train Instance Error: %f' %(epoch+1, train_instance_error))
+        # 计算该 epoch 的 loss
+        train_instance_loss = np.mean(mean_loss)
+        log_string('The %dth Train Instance Loss: %f' %(epoch+1, train_instance_loss))
 
 
         with torch.no_grad(): # 不需要计算梯度
-            test_instance_error = test(classifier.eval(), testDataLoader)
+            test_instance_loss = test(classifier.eval(), testDataLoader)
 
-            if (test_instance_error <= best_instance_error):
-                best_instance_error = test_instance_error
+            if (test_instance_loss <= best_instance_loss):
+                best_instance_loss = test_instance_loss
                 best_epoch = epoch + 1
                 logger.info('Save model...')
                 savepath = str(checkpoints_dir) + '/best_model.pth'
                 log_string('Saving at %s' % savepath)
                 state = {
                     'epoch': best_epoch,
-                    'instance_error': best_instance_error,
+                    'instance_loss': best_instance_loss,
                     'model_state_dict': classifier.state_dict(),
                     'optimizer_state_dict': optimizer.state_dict(),
                 }
                 torch.save(state, savepath)
 
-            log_string('The %dth Test Instance Error: %f' % (epoch+1 , test_instance_error))
-            log_string('Best Instance Error: %f \n'% (best_instance_error))
+            log_string('The %dth Test Instance Error: %f' % (epoch+1 , test_instance_loss))
+            log_string('Best Instance Error: %f \n'% (best_instance_loss))
 
             global_epoch += 1
 

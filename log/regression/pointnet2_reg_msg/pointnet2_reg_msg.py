@@ -2,7 +2,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F # 模块中定义的常用函数和类
 from pointnet_util import PointNetSetAbstractionMsg, PointNetSetAbstraction
-
+from models.displayPoint import displayPoint
+import numpy as np
 
 
 
@@ -35,13 +36,16 @@ class get_model(nn.Module):
             norm = None
         l1_xyz, l1_points = self.sa1(xyz, norm)         # xyz 是降采样的点，points 是这些点从低维映射到高维以后的
         l2_xyz, l2_points = self.sa2(l1_xyz, l1_points)
-        l3_xyz, l3_points = self.sa3(l2_xyz, l2_points)
+        _, l3_points = self.sa3(l2_xyz, l2_points)  # l3_xyz 就不重要了 l3_points是输出的特征向量
+        # 可视化 下采样的点
+        # temp = np.squeeze(l1_xyz.cpu()[1,:,:]).permute(1, 0)
+        # displayPoint(temp, "l1")
+
+        # 特征向量后接全连接层，提取坐标信息
         x = l3_points.view(B, 1024)
         x = self.drop1(F.relu(self.bn1(self.fc1(x))))
         x = self.drop2(F.relu(self.bn2(self.fc2(x))))
         x = self.fc3(x)
-        x = F.log_softmax(x, -1)
-
 
         return x,l3_points
 
@@ -51,9 +55,12 @@ class get_loss(nn.Module):
         super(get_loss, self).__init__()
 
     def forward(self, pred, target, trans_feat):
-        total_loss = F.mse_loss(pred, target)
-        #total_loss = F.nll_loss(pred, target)   # 输入 是一个对数概率向量和一个目标标签. 它不会为我们计算对数概率，
-                                                # 适合最后一层是log_softmax()的网络
+        # total_loss = F.l1_loss(pred, target)
+        dist = (pred - target) ** 2
+        dist = dist.reshape(pred.shape[0], -1, 3)
+        dist = torch.sqrt(torch.sum(dist, 2))  # [Batch_size,36] 36个关键点的坐标，预测值与标签值的欧氏距离
+        # total_loss = torch.mean(torch.mean(dist, 1)).item()  # 记录该 batch 的误差率
+        total_loss = torch.mean(torch.mean(dist, 1))
 
         return total_loss
 
@@ -61,5 +68,5 @@ class get_loss(nn.Module):
 
 
 if __name__ == '__main__':
-    x = get_model(10, normal_channel=True)
+    x = get_model(18, normal_channel=False)
     print(x)

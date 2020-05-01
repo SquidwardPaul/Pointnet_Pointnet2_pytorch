@@ -341,7 +341,6 @@ class PointNetFeaturePropagation(nn.Module):
 
 
 if __name__ == '__main__':
-    print('dd')
     sa1 = PointNetSetAbstractionMsg(512, [0.1, 0.2, 0.4], [16, 32, 128], 3,
                                     [[32, 32, 64], [64, 64, 128], [64, 96, 128]])
     print(sa1)

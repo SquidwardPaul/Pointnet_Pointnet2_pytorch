@@ -17,7 +17,7 @@ import importlib
 import cv2
 from openni import openni2
 from openni import _openni2 as c_api
-from models.displayPoint import displayPoint
+from models.displayPoint import displayPoint1,displayPoint2
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = BASE_DIR
@@ -74,9 +74,27 @@ def getOrbbec():
         print("ERROR Unable to open the device: ", ex, " device disconnected? \n")
         return
 
-def depth2uvd(depth):
+def depth2uvd(depth_array):
+    U = np.tile(np.linspace(1, args.width, args.width), (args.height, 1)).astype(np.float32)
+    V = np.tile(np.linspace(1, args.height, args.height), (args.width, 1)).astype(np.float32).transpose(1, 0)
+    cloud_z = depth_array
+    cloud_x = ((U - 309.9648) * cloud_z) / 515.8994 + (244.1680 - V) * 1.3982e-06 * cloud_z
+    cloud_y = (V - 244.1680) * cloud_z / 516.2843
+    # 下采样
+    cloud_x = cloud_x[0::3, 0::3]
+    cloud_y = cloud_y[0::3, 0::3]
+    cloud_z = cloud_z[0::3, 0::3]
+    # 变换成标准形式 cloud_point[Num, 3],并删除无效点
+    cloud_x = np.reshape(cloud_x, (-1, 1))
+    cloud_y = np.reshape(cloud_y, (-1, 1))
+    cloud_z = np.reshape(cloud_z, (-1, 1))
+    cloud_point = np.hstack((cloud_x, cloud_y, cloud_z))
+    index = np.where(cloud_point[:, 2] == 0)[0]
+    cloud_point = np.delete(cloud_point, index, axis=0)
+    index = np.where(cloud_point[:, 2] > 2000)[0]
+    cloud_point = np.delete(cloud_point, index, axis=0)
 
-    pass
+    return cloud_point
 
 def main(args):
     '''HYPER PARAMETER'''
@@ -84,7 +102,7 @@ def main(args):
 
     '''MODEL LOADING 加载模型'''
     MODEL = importlib.import_module(args.model)  # 导入模型所在的模块
-    classifier = MODEL.get_model(args.num_joint * 3, normal_channel=args.normal,mode='Run').cuda()
+    classifier = MODEL.get_model(args.num_joint * 3, normal_channel=args.normal).cuda()
 
     experiment_dir = Path('./log/regression/pointnet2_reg_msg')
     checkpoint = torch.load(str(experiment_dir) + '/checkpoints/best_model.pth')
@@ -146,47 +164,23 @@ def main(args):
 
     except:
         # 读取 depth
-        depth_array = matplotlib.image.imread('bear_depth_1.tif').astype(np.float32)
+        depth_array = matplotlib.image.imread('test_depth_1.tif').astype(np.float32)
         # depth to UVD
-        U = np.tile(np.linspace(1, args.width, args.width),(args.height,1)).astype(np.float32)
-        V = np.tile(np.linspace(1, args.height, args.height),(args.width,1)).astype(np.float32).transpose(1,0)
-        cloud_z = depth_array
-        cloud_x = ((U-309.9648) * cloud_z ) /515.8994 +(244.1680-V)*1.3982e-06*cloud_z
-        cloud_y = (V-244.1680) * cloud_z / 516.2843
-        # 下采样
-        cloud_x = cloud_x[0::2, 0::2]
-        cloud_y = cloud_y[0::2, 0::2]
-        cloud_z = cloud_z[0::2, 0::2]
-
-        cloud_x = np.reshape(cloud_x, (-1, 1))
-        cloud_y = np.reshape(cloud_y, (-1, 1))
-        cloud_z = np.reshape(cloud_z, (-1, 1))
-
-
-        #
-        cloud_point = np.hstack((cloud_x,cloud_y,cloud_z))
-        index = np.where(cloud_point[:, 2] == 0)[0]
-        cloud_point = np.delete(cloud_point, index, axis=0)
-        cloud_point, scale, centroid = pc_normalize(cloud_point)
-        cloud_point = np.reshape(cloud_point,(1,-1,3))
-        cloud_point = cloud_point.transpose(0, 2, 1)
-
-        # displayPoint(cloud_point, 'bear')
-
-        cloud_point = torch.from_numpy(cloud_point).cuda()
-        pred, _ = classifier(cloud_point)
+        cloud_point = depth2uvd(depth_array)
+        # 将点云归一化
+        cloud_point_normal, scale, centroid = pc_normalize(cloud_point)
+        cloud_point_normal = np.reshape(cloud_point_normal,(1,-1,3))
+        cloud_point_normal = cloud_point_normal.transpose(0, 2, 1)
+        # 对归一化的点云做预测
+        cloud_point_normal = torch.from_numpy(cloud_point_normal).cuda()
+        pred, _ = classifier(cloud_point_normal)
+        # 对预测结果做还原
         pred_reduction = pred.cpu().data.numpy()
         pred_reduction = pred_reduction * np.tile(scale, (args.num_joint * 3, 1)).transpose(1, 0)
         pred_reduction = pred_reduction + np.tile(centroid, (1, args.num_joint))
+        pred_reduction = np.reshape(pred_reduction,(-1,3))
 
-
-
-
-        print(depth_array)
-        depth2uvd(depth_array)
-
-
-
+        displayPoint2(cloud_point, pred_reduction, 'bear')
 
 
 

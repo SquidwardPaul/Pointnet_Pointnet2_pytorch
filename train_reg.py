@@ -153,6 +153,7 @@ def main(args):
     else:
         optimizer = torch.optim.SGD(classifier.parameters(), lr=0.01, momentum=0.9)
 
+    # scheduler.step()是对lr进行调整，step_size表示scheduler.step()每调用step_size次，对应的学习率就会按照策略调整一次
     scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=20, gamma=0.7)
     global_epoch = 0
     global_step = 0
@@ -165,7 +166,8 @@ def main(args):
     for epoch in range(start_epoch,args.epoch):
         log_string('Epoch %d (%d/%s):' % (global_epoch + 1, epoch + 1, args.epoch))
 
-        scheduler.step()
+        # scheduler.step()是对lr进行调整
+        scheduler.step() # scheduler.step()每调用step_size次，对应的学习率就会按照策略调整一次
         for batch_id, data in tqdm(enumerate(trainDataLoader, 0), total=len(trainDataLoader), smoothing=0.9):
             # 提取 mini_batch
             points, target, scale, centroid = data

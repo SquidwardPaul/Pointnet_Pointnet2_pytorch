@@ -46,7 +46,7 @@ class PartNormalDataset(Dataset):
             dir_point = os.path.join(self.root, self.cat[item])
             fns = sorted(os.listdir(dir_point))
             # print(fns[0][0:-4])
-            if split == 'trainval':
+            if split == 'trainval': #?????????????????
                 fns = [fn for fn in fns if ((fn[0:-4] in train_ids) or (fn[0:-4] in val_ids))]
             elif split == 'train':
                 fns = [fn for fn in fns if fn[0:-4] in train_ids]

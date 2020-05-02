@@ -17,7 +17,7 @@ import importlib
 import cv2
 from openni import openni2
 from openni import _openni2 as c_api
-from models.displayPoint import displayPoint1,displayPoint2
+from displayPoint import displayPoint1,displayPoint2
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = BASE_DIR

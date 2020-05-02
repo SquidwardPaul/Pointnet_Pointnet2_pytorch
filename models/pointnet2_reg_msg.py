@@ -3,7 +3,6 @@ import torch.nn as nn
 import torch.nn.functional as F # 模块中定义的常用函数和类
 from pointnet_util import PointNetSetAbstractionMsg, PointNetSetAbstraction
 from models.displayPoint import displayPoint1
-import numpy as np
 
 
 

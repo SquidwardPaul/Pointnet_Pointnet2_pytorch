@@ -16,6 +16,7 @@ from tqdm import tqdm
 import provider
 import numpy as np
 
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = BASE_DIR
 sys.path.append(os.path.join(ROOT_DIR, 'models'))
@@ -37,15 +38,18 @@ def to_categorical(y, num_classes):
 def parse_args():
     parser = argparse.ArgumentParser('Model')
     parser.add_argument('--model', type=str, default='pointnet2_part_seg_msg', help='model name [default: pointnet2_part_seg_msg]')
+    parser.add_argument('--log_dir', type=str, default='pointnet2_part_seg_msg', help='Log path [default: None]')
     parser.add_argument('--batch_size', type=int, default=16, help='Batch Size during training [default: 16]')
     parser.add_argument('--epoch',  default=251, type=int, help='Epoch to run [default: 251]')
-    parser.add_argument('--learning_rate', default=0.001, type=float, help='Initial learning rate [default: 0.001]')
     parser.add_argument('--gpu', type=str, default='0', help='GPU to use [default: GPU 0]')
+
+    parser.add_argument('--num_point', type=int, default=2048, help='Point Number [default: 2048]')
+    parser.add_argument('--num_part', type=int, default=50, help='Part Number of Segmentation [default: 50]')
     parser.add_argument('--optimizer', type=str, default='Adam', help='Adam or SGD [default: Adam]')
-    parser.add_argument('--log_dir', type=str, default=None, help='Log path [default: None]')
+    parser.add_argument('--learning_rate', default=0.001, type=float, help='Initial learning rate [default: 0.001]')
     parser.add_argument('--decay_rate', type=float, default=1e-4, help='weight decay [default: 1e-4]')
-    parser.add_argument('--npoint', type=int,  default=2048, help='Point Number [default: 2048]')
-    parser.add_argument('--normal', action='store_true', default=False, help='Whether to use normal information [default: False]')
+    parser.add_argument('--normal', default=False, help='Whether to use normal information [default: False]')
+
     parser.add_argument('--step_size', type=int,  default=20, help='Decay step for lr decay [default: every 20 epochs]')
     parser.add_argument('--lr_decay', type=float,  default=0.5, help='Decay rate for lr decay [default: 0.5]')
 
@@ -59,7 +63,7 @@ def main(args):
     '''HYPER PARAMETER'''
     os.environ["CUDA_VISIBLE_DEVICES"] = args.gpu
 
-    '''CREATE DIR'''
+    '''CREATE DIR 建立保存路径'''
     timestr = str(datetime.datetime.now().strftime('%Y-%m-%d_%H-%M'))
     experiment_dir = Path('./log/')
     experiment_dir.mkdir(exist_ok=True)
@@ -75,7 +79,7 @@ def main(args):
     log_dir = experiment_dir.joinpath('logs/')
     log_dir.mkdir(exist_ok=True)
 
-    '''LOG'''
+    '''LOG 建立日志文件'''
     args = parse_args()
     logger = logging.getLogger("Model")
     logger.setLevel(logging.INFO)
@@ -87,24 +91,24 @@ def main(args):
     log_string('PARAMETER ...')
     log_string(args)
 
-    root = 'data/shapenetcore_partanno_segmentation_benchmark_v0_normal/'
-
-    TRAIN_DATASET = PartNormalDataset(root = root, npoints=args.npoint, split='trainval', normal_channel=args.normal)
+    '''DATA LOADING 加载数据'''
+    log_string('Load dataset ...')
+    DATA_PATH = './data/shapenetcore_partanno_segmentation_benchmark_v0_normal/'
+    # 这里是需要我改的 编写专用的数据集加载函数
+    TRAIN_DATASET = PartNormalDataset(root = DATA_PATH, npoints=args.num_point, split='trainval', normal_channel=args.normal)
+    TEST_DATASET = PartNormalDataset(root=DATA_PATH, npoints=args.num_point, split='test', normal_channel=args.normal)
     trainDataLoader = torch.utils.data.DataLoader(TRAIN_DATASET, batch_size=args.batch_size,shuffle=True, num_workers=4)
-    TEST_DATASET = PartNormalDataset(root = root, npoints=args.npoint, split='test', normal_channel=args.normal)
     testDataLoader = torch.utils.data.DataLoader(TEST_DATASET, batch_size=args.batch_size,shuffle=False, num_workers=4)
     log_string("The number of training data is: %d" % len(TRAIN_DATASET))
     log_string("The number of test data is: %d" %  len(TEST_DATASET))
-    num_classes = 16
-    num_part = 50
-    '''MODEL LOADING'''
-    MODEL = importlib.import_module(args.model)
-    shutil.copy('models/%s.py' % args.model, str(experiment_dir))
-    shutil.copy('models/pointnet_util.py', str(experiment_dir))
 
-    classifier = MODEL.get_model(num_part, normal_channel=args.normal).cuda()
-    criterion = MODEL.get_loss().cuda()
-
+    '''MODEL LOADING 加载模型'''
+    # 把依赖的模块函数 备份到日志路径里
+    shutil.copy('./models/%s.py' % args.model, str(experiment_dir))
+    shutil.copy('./models/pointnet_util.py', str(experiment_dir))
+    MODEL = importlib.import_module(args.model) #导入模型所在的模块
+    classifier = MODEL.get_model(args.num_part, normal_channel=args.normal).cuda()
+    criterion = MODEL.get_loss().cuda() # 计算损失函数
 
     def weights_init(m):
         classname = m.__class__.__name__
@@ -115,6 +119,7 @@ def main(args):
             torch.nn.init.xavier_normal_(m.weight.data)
             torch.nn.init.constant_(m.bias.data, 0.0)
 
+    # 尝试加载已有的训练模型
     try:
         checkpoint = torch.load(str(experiment_dir) + '/checkpoints/best_model.pth')
         start_epoch = checkpoint['epoch']
@@ -123,7 +128,16 @@ def main(args):
     except:
         log_string('No existing model, starting training from scratch...')
         start_epoch = 0
-        classifier = classifier.apply(weights_init)
+        classifier = classifier.apply(weights_init) #??????????????
+
+
+
+
+    num_classes = 16
+
+
+
+
 
     if args.optimizer == 'Adam':
         optimizer = torch.optim.Adam(
